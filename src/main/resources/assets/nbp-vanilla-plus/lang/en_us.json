@@ -1,0 +1,31 @@
+{
+  "item.nbp-vanilla-plus.echo_ingot": "Echo Ingot",
+  "item.nbp-vanilla-plus.echo_scrap": "Echo Scrap",
+
+  "item.nbp-vanilla-plus.echo_sword": "Echo Sword",
+  "item.nbp-vanilla-plus.echo_pickaxe": "Echo Pickaxe",
+  "item.nbp-vanilla-plus.echo_axe": "Echo Axe",
+  "item.nbp-vanilla-plus.echo_shovel": "Echo Shovel",
+  "item.nbp-vanilla-plus.echo_hoe": "Echo Hoe",
+  "item.nbp-vanilla-plus.echo_spear": "Echo Spear",
+
+  "item.nbp-vanilla-plus.echo_helmet": "Echo Helmet",
+  "item.nbp-vanilla-plus.echo_chestplate": "Echo Chestplate",
+  "item.nbp-vanilla-plus.echo_leggings": "Echo Leggings",
+  "item.nbp-vanilla-plus.echo_boots": "Echo Boots",
+
+  "item.nbp-vanilla-plus.echo_horse_armor": "Echo Horse Armor",
+  "item.nbp-vanilla-plus.echo_nautilus_armor": "Echo Nautilus Armor",
+
+  "item.nbp-vanilla-plus.echo_upgrade_smithing_template": "Echo Upgrade",
+  "item.nbp-vanilla-plus.amethyst_upgrade_smithing_template": "Amethyst Upgrade (WIP)",
+  "item.nbp-vanilla-plus.cobbler": "Cobbler",
+
+  "block.nbp-vanilla-plus.echo_block": "Block of Echo",
+  "block.nbp-vanilla-plus.echo_magma": "Echo Magma Block",
+  "block.nbp-vanilla-plus.reinforced_obsidian": "Reinforced Obsidian",
+
+
+
+  "creativemodetab.nbp-vanilla-plus.mod_content": "NikiBroPol Vanilla Plus"
+}
