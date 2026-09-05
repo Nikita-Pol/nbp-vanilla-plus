@@ -32,5 +32,13 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
         tag(ModTags.Blocks.INCORRECT_FOR_ECHO_TOOL);
+
+        tag(BlockTags.CROPS)
+                .add(ModBlocks.getRK(ModBlocks.STRANGE_BEETROOT_CROP));
+
+
+        tag(BlockTags.CAVE_VINES)
+                .add(ModBlocks.getRK(ModBlocks.ECHO_VINES))
+                .add(ModBlocks.getRK(ModBlocks.ECHO_VINES_PLANT));
     }
 }

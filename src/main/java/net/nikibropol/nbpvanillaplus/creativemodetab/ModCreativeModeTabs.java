@@ -43,6 +43,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ECHO_HORSE_ARMOR);
                         output.accept(ModItems.ECHO_NAUTILUS_ARMOR);
 
+                        output.accept(ModItems.ECHOBERRY);
+                        output.accept(ModItems.AMETHYST_SWEET_BERRIES);
+                        output.accept(ModItems.STRANGE_BEETROOT);
+
+                        output.accept(ModItems.STRANGE_BEETROOT_SEEDS);
+
                         output.accept(ModItems.COBBLER);
 
                     })

@@ -6,6 +6,7 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.nikibropol.nbpvanillaplus.block.ModBlocks;
+import net.nikibropol.nbpvanillaplus.block.custom.StrangeBeetrootCropBlock;
 import net.nikibropol.nbpvanillaplus.item.ModArmorMaterials;
 import net.nikibropol.nbpvanillaplus.item.ModItems;
 
@@ -20,6 +21,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(ModBlocks.ECHO_BLOCK);
         blockModelGenerators.createTrivialCube(ModBlocks.ECHO_MAGMA);
         blockModelGenerators.createTrivialCube(ModBlocks.REINFORCED_OBSIDIAN);
+
+        blockModelGenerators.createCropBlock(ModBlocks.STRANGE_BEETROOT_CROP, StrangeBeetrootCropBlock.AGE, 0,1,2,3);
+        //blockModelGenerators.createGrowingPlant();
     }
 
     @Override
@@ -50,5 +54,10 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(ModItems.ECHO_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.ECHO_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerators.generateFlatItem(ModItems.ECHOBERRY, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.AMETHYST_SWEET_BERRIES, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerators.generateFlatItem(ModItems.STRANGE_BEETROOT, ModelTemplates.FLAT_ITEM);
     }
 }

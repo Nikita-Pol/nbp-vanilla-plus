@@ -5,19 +5,35 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.nikibropol.nbpvanillaplus.NBPVanillaPlus;
+import net.nikibropol.nbpvanillaplus.block.ModBlocks;
+import net.nikibropol.nbpvanillaplus.food.ModFoods;
 import net.nikibropol.nbpvanillaplus.item.custom.CobblerItem;
 
 import java.util.function.Function;
 
 public class ModItems {
 
-    public static final Item ECHO_INGOT = registerItem("echo_ingot", properties -> new Item(properties.fireResistant()));
-    public static final Item ECHO_SCRAP = registerItem("echo_scrap", properties -> new Item(properties.fireResistant()));
-    public static final Item ECHO_UPGRADE_SMITHING_TEMPLATE = registerItem("echo_upgrade_smithing_template", properties -> new Item(properties.fireResistant()));
+    public static final Item ECHO_INGOT = registerItem("echo_ingot",
+            properties -> new Item(properties.fireResistant()));
+    public static final Item ECHO_SCRAP = registerItem("echo_scrap",
+            properties -> new Item(properties.fireResistant()));
+    public static final Item ECHO_UPGRADE_SMITHING_TEMPLATE = registerItem("echo_upgrade_smithing_template",
+            properties -> new Item(properties.fireResistant()));
     public static final Item AMETHYST_UPGRADE_SMITHING_TEMPLATE = registerItem("amethyst_upgrade_smithing_template", Item::new);
+
+    public static final Item ECHOBERRY = registerItem("echoberry",
+            properties -> new Item(properties.food(ModFoods.ECHOBERRY, ModFoods.ECHOBERRY_CONSUMABLE)));
+
+    public static final Item AMETHYST_SWEET_BERRIES = registerItem("amethyst_sweet_berries",
+            properties -> new Item(properties.food(ModFoods.AMETHYST_SWEET_BERRIES, ModFoods.AMETHYST_SWEET_BERRIES_CONSUMABLE)));
+
+    public static final Item STRANGE_BEETROOT = registerItem("strange_beetroot",
+            properties -> new Item(properties.food(ModFoods.STRANGE_BEETROOT, ModFoods.STRANGE_BEETROOT_CONSUMABLE)));
+    public static final Item STRANGE_BEETROOT_SEEDS = registerItem("strange_beetroot_seeds",
+            properties -> new BlockItem(ModBlocks.STRANGE_BEETROOT_CROP, properties.useItemDescriptionPrefix()));
 
     public static final Item COBBLER = registerItem("cobbler", properties -> new CobblerItem(properties.durability(128)));
     public static final Item ECHO_SWORD = registerItem("echo_sword",
@@ -25,11 +41,11 @@ public class ModItems {
     public static final Item ECHO_PICKAXE = registerItem("echo_pickaxe",
             properties -> new Item(properties.pickaxe(ModToolMaterials.ECHO_INGOT, 0f, -2.8f).fireResistant()));
     public static final Item ECHO_AXE = registerItem("echo_axe",
-            properties -> new Item(properties.axe(ModToolMaterials.ECHO_INGOT, 6f, -3.0f).fireResistant()));
+            properties -> new AxeItem(ModToolMaterials.ECHO_INGOT, 6f, -3.0f, properties.fireResistant()));
     public static final Item ECHO_SHOVEL = registerItem("echo_shovel",
-            properties -> new Item(properties.shovel(ModToolMaterials.ECHO_INGOT, -1f, -3.0f).fireResistant()));
+            properties -> new ShovelItem(ModToolMaterials.ECHO_INGOT, -1f, -3.0f, properties.fireResistant()));
     public static final Item ECHO_HOE = registerItem("echo_hoe",
-            properties -> new Item(properties.hoe(ModToolMaterials.ECHO_INGOT, -7f, 0f).fireResistant()));
+            properties -> new HoeItem(ModToolMaterials.ECHO_INGOT, -7f, 0f, properties.fireResistant()));
     public static final Item ECHO_SPEAR = registerItem("echo_spear",
             properties -> new Item(properties.spear(ModToolMaterials.ECHO_INGOT, 1.35f, 2.5f, 0.25f,
                     2f, 8.0f, 4f, 5.1f, 7f, 4.6f).fireResistant()));

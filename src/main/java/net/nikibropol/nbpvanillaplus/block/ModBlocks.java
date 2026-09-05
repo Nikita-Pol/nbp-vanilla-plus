@@ -1,6 +1,5 @@
 package net.nikibropol.nbpvanillaplus.block;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -11,8 +10,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.PushReaction;
 import net.nikibropol.nbpvanillaplus.NBPVanillaPlus;
 import net.nikibropol.nbpvanillaplus.block.custom.EchoMagmaBlock;
+import net.nikibropol.nbpvanillaplus.block.custom.EchoVinesBlock;
+import net.nikibropol.nbpvanillaplus.block.custom.EchoVinesPlantBlock;
+import net.nikibropol.nbpvanillaplus.block.custom.StrangeBeetrootCropBlock;
 
 import java.util.function.Function;
 
@@ -33,12 +37,31 @@ public class ModBlocks {
             properties -> new Block(properties.strength(200f, 5000f)
                     .requiresCorrectToolForDrops()));
 
+    public static final Block ECHO_VINES = registerBlockWithoutBlockItem("echo_vines",
+            properties -> new EchoVinesBlock(properties.randomTicks().noCollision().sound(SoundType.GLOW_LICHEN)
+                    .pushReaction(PushReaction.DESTROY)
+                    .lightLevel(state -> state.getValue(BlockStateProperties.BERRIES) ? 10 : 0)));
+
+    public static final Block ECHO_VINES_PLANT = registerBlockWithoutBlockItem("echo_vines_plant",
+            properties -> new EchoVinesPlantBlock(properties.randomTicks().noCollision().sound(SoundType.GLOW_LICHEN)
+                    .pushReaction(PushReaction.DESTROY)
+                    .lightLevel(state -> state.getValue(BlockStateProperties.BERRIES) ? 10 : 0)));
+
+    public  static final Block STRANGE_BEETROOT_CROP = registerBlockWithoutBlockItem("strange_beetroot_crop",
+    properties -> new StrangeBeetrootCropBlock(properties.noCollision().randomTicks().instabreak().sound(SoundType.CROP)
+            .pushReaction(PushReaction.DESTROY)));
+
 
 
     private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function){
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name))));
         registerBlockItem(name, toRegister);
 
+        return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name), toRegister);
+    }
+
+    private static Block registerBlockWithoutBlockItem(String name, Function<BlockBehaviour.Properties, Block> function) {
+        Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name))));
         return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name), toRegister);
     }
 

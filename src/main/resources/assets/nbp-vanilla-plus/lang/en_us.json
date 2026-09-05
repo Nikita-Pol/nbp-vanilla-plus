@@ -2,6 +2,12 @@
   "item.nbp-vanilla-plus.echo_ingot": "Echo Ingot",
   "item.nbp-vanilla-plus.echo_scrap": "Echo Scrap",
 
+  "item.nbp-vanilla-plus.echoberry": "Echo Berries",
+  "item.nbp-vanilla-plus.amethyst_sweet_berries": "Amethyst Sweet Berries",
+  "item.nbp-vanilla-plus.strange_beetroot": "Strange Beetroot",
+
+  "item.nbp-vanilla-plus.strange_beetroot_seeds": "Strange Beetroot Seeds",
+
   "item.nbp-vanilla-plus.echo_sword": "Echo Sword",
   "item.nbp-vanilla-plus.echo_pickaxe": "Echo Pickaxe",
   "item.nbp-vanilla-plus.echo_axe": "Echo Axe",
@@ -24,6 +30,8 @@
   "block.nbp-vanilla-plus.echo_block": "Block of Echo",
   "block.nbp-vanilla-plus.echo_magma": "Echo Magma Block",
   "block.nbp-vanilla-plus.reinforced_obsidian": "Reinforced Obsidian",
+
+  "block.nbp-vanilla-plus.strange_beetroot_crp[": "Strange Beetroot Crop",
 
 
 
