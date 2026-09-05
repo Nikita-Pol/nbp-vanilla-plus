@@ -25,11 +25,11 @@ public class ModItems {
     public static final Item ECHO_PICKAXE = registerItem("echo_pickaxe",
             properties -> new Item(properties.pickaxe(ModToolMaterials.ECHO_INGOT, 0f, -2.8f).fireResistant()));
     public static final Item ECHO_AXE = registerItem("echo_axe",
-            properties -> new Item(properties.axe(ModToolMaterials.ECHO_INGOT, 6f, -3.0f).fireResistant()));
+            properties -> new AxeItem(ModToolMaterials.ECHO_INGOT, 6f, -3.0f, properties.fireResistant()));
     public static final Item ECHO_SHOVEL = registerItem("echo_shovel",
-            properties -> new Item(properties.shovel(ModToolMaterials.ECHO_INGOT, -1f, -3.0f).fireResistant()));
+            properties -> new ShovelItem(ModToolMaterials.ECHO_INGOT, -1f, -3.0f, properties.fireResistant()));
     public static final Item ECHO_HOE = registerItem("echo_hoe",
-            properties -> new Item(properties.hoe(ModToolMaterials.ECHO_INGOT, -7f, 0f).fireResistant()));
+            properties -> new HoeItem(ModToolMaterials.ECHO_INGOT, -7f, 0f, properties.fireResistant()));
     public static final Item ECHO_SPEAR = registerItem("echo_spear",
             properties -> new Item(properties.spear(ModToolMaterials.ECHO_INGOT, 1.35f, 2.5f, 0.25f,
                     2f, 8.0f, 4f, 5.1f, 7f, 4.6f).fireResistant()));
