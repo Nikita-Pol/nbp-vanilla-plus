@@ -160,7 +160,55 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ECHO_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ECHO_BLOCK);
                 shapeless(RecipeCategory.MISC, ModItems.ECHO_INGOT, 9)
                         .requires(ModBlocks.ECHO_BLOCK)
-                        .unlockedBy(getHasName(ModBlocks.ECHO_BLOCK), has(ModBlocks.ECHO_BLOCK));
+                        .unlockedBy(getHasName(ModBlocks.ECHO_BLOCK), has(ModBlocks.ECHO_BLOCK))
+                        .group("echo_block")
+                        .save(output, "echo_block_to_ingots");
+
+                nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ECHO_FRAGMENT, RecipeCategory.MISC, Items.ECHO_SHARD);
+                shapeless(RecipeCategory.MISC, ModItems.ECHO_FRAGMENT, 9)
+                        .requires(Items.ECHO_SHARD)
+                        .unlockedBy(getHasName(Items.ECHO_SHARD), has(Items.ECHO_SHARD))
+                        .group("echo_fragment")
+                        .save(output, "echo_shard_to_fragments");
+
+                shapeless(RecipeCategory.REDSTONE, ModBlocks.OBSIDIAN_REDSTONE_LAMP)
+                        .requires(Blocks.OBSIDIAN)
+                        .requires(Blocks.REDSTONE_LAMP)
+                        .unlockedBy(getHasName(Blocks.REDSTONE_LAMP), has(Blocks.REDSTONE_LAMP))
+                        .group("obsidian_redstone_lamp")
+                        .save(output, "obsidian_redstone_lamp_craft");
+
+                shapeless(RecipeCategory.MISC, ModItems.FUSED_ECHO_SHARD)
+                        .requires(Items.ECHO_SHARD, 2)
+                        .unlockedBy(getHasName(Items.ECHO_SHARD), has(Items.ECHO_SHARD))
+                        .group("fused_echo_shard")
+                        .save(output, "fused_echo_shard_craft");
+
+                shapeless(RecipeCategory.TOOLS, ModItems.RECOVERY_SHARD)
+                        .requires(ModItems.FUSED_ECHO_SHARD)
+                        .requires(Items.RECOVERY_COMPASS)
+                        .unlockedBy(getHasName(ModItems.FUSED_ECHO_SHARD), has(ModItems.FUSED_ECHO_SHARD))
+                        .unlockedBy(getHasName(Items.RECOVERY_COMPASS), has(Items.RECOVERY_COMPASS))
+                        .group("recovery_shard")
+                        .save(output, "recovery_shard_craft");
+
+                shaped(RecipeCategory.COMBAT, ModItems.ECHO_BOW)
+                        .pattern(" E")
+                        .pattern("EB")
+                        .define('E', ModItems.FUSED_ECHO_SHARD)
+                        .define('B', Items.BOW)
+                        .unlockedBy(getHasName(ModItems.FUSED_ECHO_SHARD), has(ModItems.FUSED_ECHO_SHARD))
+                        .group("echo_bow")
+                        .save(output, "echo_bow_craft");
+
+                shapeless(RecipeCategory.MISC, ModItems.DREAM_SEEDS)
+                        .requires(ModBlocks.DREAM_PETALS_GREEN)
+                        .requires(ModBlocks.DREAM_PETALS_BLUE)
+                        .requires(ModBlocks.DREAM_PETALS_PURPLE)
+                        .requires(ModBlocks.DREAM_PETALS_LIGHT_BLUE)
+                        .unlockedBy(getHasName(ModItems.DREAM_SEEDS), has(ModItems.DREAM_SEEDS))
+                        .group("dream_seeds")
+                        .save(output, "dream_seeds_craft");
 
                 Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_INGOT, RecipeCategory.MISC, Items.HEAVY_CORE, ModItems.ECHO_INGOT, output);
 
@@ -210,7 +258,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("WWW")
                         .define('W', ItemTags.LOGS)
                         .unlockedBy("has_log", has(ItemTags.LOGS))
-                        .group("chest_crafting")
+                        .group("chest")
                         .save(output, "logs_to_chest_craft");
 
                 shaped(RecipeCategory.MISC, Items.STICK, 16)
@@ -218,7 +266,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("W")
                         .define('W', ItemTags.LOGS)
                         .unlockedBy("has_log", has(ItemTags.LOGS))
-                        .group("stick_crafting")
+                        .group("stick")
                         .save(output, "logs_to_stick_craft");
 
                 shaped(RecipeCategory.MISC, Items.CHEST, 2)
@@ -227,7 +275,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("BBB")
                         .define('B', ItemTags.BAMBOO_BLOCKS)
                         .unlockedBy("has_log", has(ItemTags.BAMBOO_BLOCKS))
-                        .group("chest_crafting")
+                        .group("chest")
                         .save(output, "bamboo_logs_to_chest_craft");
 
                 shaped(RecipeCategory.MISC, Items.STICK, 8)
@@ -235,7 +283,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("B")
                         .define('B', ItemTags.BAMBOO_BLOCKS)
                         .unlockedBy("has_log", has(ItemTags.BAMBOO_BLOCKS))
-                        .group("stick_crafting")
+                        .group("stick")
                         .save(output, "bamboo_logs_to_stick_craft");
 
                 shaped(RecipeCategory.MISC, ModItems.COBBLER)
@@ -247,6 +295,30 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy("has_stone", has(Items.STONE))
                         .group("cobbler_craft")
                         .save(output, "cobbler_craft");
+
+                shapeless(RecipeCategory.MISC, Items.DYE.lime())
+                        .requires(ModBlocks.DREAM_PETALS_GREEN)
+                        .unlockedBy("has_green_dream_petals",has(ModBlocks.DREAM_PETALS_GREEN))
+                        .group("green_dye")
+                        .save(output, "green_dye_from_green_dream_petals");
+
+                shapeless(RecipeCategory.MISC, Items.DYE.blue())
+                        .requires(ModBlocks.DREAM_PETALS_BLUE)
+                        .unlockedBy("has_blue_dream_petals",has(ModBlocks.DREAM_PETALS_BLUE))
+                        .group("blue_dye")
+                        .save(output, "blue_dye_from_blue_dream_petals");
+
+                shapeless(RecipeCategory.MISC, Items.DYE.purple())
+                        .requires(ModBlocks.DREAM_PETALS_PURPLE)
+                        .unlockedBy("has_purple_dream_petals",has(ModBlocks.DREAM_PETALS_PURPLE))
+                        .group("purple_dye")
+                        .save(output, "purple_dye_from_purple_dream_petals");
+
+                shapeless(RecipeCategory.MISC, Items.DYE.lightBlue())
+                        .requires(ModBlocks.DREAM_PETALS_LIGHT_BLUE)
+                        .unlockedBy("has_light_blue_dream_petals",has(ModBlocks.DREAM_PETALS_LIGHT_BLUE))
+                        .group("light_blue_dye")
+                        .save(output, "light_blue_dye_from_light_blue_dream_petals");
 
             }
         };

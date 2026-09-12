@@ -19,14 +19,18 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativemodetab.nbp-vanilla-plus.mod_content"))
                     .displayItems((parameters, output) -> {
                         output.accept(ModBlocks.REINFORCED_OBSIDIAN);
+                        output.accept(ModBlocks.OBSIDIAN_REDSTONE_LAMP);
+                        output.accept(ModBlocks.ECHO_MAGMA);
+                        output.accept(ModBlocks.ECHO_BLOCK);
 
                         output.accept(ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE);
                         output.accept(ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE);
 
-                        output.accept(ModBlocks.ECHO_MAGMA);
+                        output.accept(ModItems.ECHO_FRAGMENT);
+                        output.accept(ModItems.FUSED_ECHO_SHARD);
+                        output.accept(ModItems.RECOVERY_SHARD);
                         output.accept(ModItems.ECHO_SCRAP);
                         output.accept(ModItems.ECHO_INGOT);
-                        output.accept(ModBlocks.ECHO_BLOCK);
 
                         output.accept(ModItems.ECHO_SWORD);
                         output.accept(ModItems.ECHO_PICKAXE);
@@ -34,6 +38,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ECHO_AXE);
                         output.accept(ModItems.ECHO_HOE);
                         output.accept(ModItems.ECHO_SPEAR);
+                        output.accept(ModItems.ECHO_BOW);
 
                         output.accept(ModItems.ECHO_HELMET);
                         output.accept(ModItems.ECHO_CHESTPLATE);
@@ -43,11 +48,16 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ECHO_HORSE_ARMOR);
                         output.accept(ModItems.ECHO_NAUTILUS_ARMOR);
 
+                        output.accept(ModItems.STRANGE_BEETROOT_SEEDS);
+                        output.accept(ModItems.DREAM_SEEDS);
+                        output.accept(ModBlocks.DREAM_PETALS_GREEN);
+                        output.accept(ModBlocks.DREAM_PETALS_BLUE);
+                        output.accept(ModBlocks.DREAM_PETALS_PURPLE);
+                        output.accept(ModBlocks.DREAM_PETALS_LIGHT_BLUE);
+
                         output.accept(ModItems.ECHOBERRY);
                         output.accept(ModItems.AMETHYST_SWEET_BERRIES);
                         output.accept(ModItems.STRANGE_BEETROOT);
-
-                        output.accept(ModItems.STRANGE_BEETROOT_SEEDS);
 
                         output.accept(ModItems.COBBLER);
 

@@ -1,12 +1,16 @@
 {
+  "item.nbp-vanilla-plus.fused_echo_shard": "Fused Echo Shard",
+  "item.nbp-vanilla-plus.recovery_shard": "Recovery Shard",
   "item.nbp-vanilla-plus.echo_ingot": "Echo Ingot",
   "item.nbp-vanilla-plus.echo_scrap": "Echo Scrap",
+  "item.nbp-vanilla-plus.echo_fragment": "Fragment of Echo",
 
   "item.nbp-vanilla-plus.echoberry": "Echo Berries",
   "item.nbp-vanilla-plus.amethyst_sweet_berries": "Amethyst Sweet Berries",
   "item.nbp-vanilla-plus.strange_beetroot": "Strange Beetroot",
 
   "item.nbp-vanilla-plus.strange_beetroot_seeds": "Strange Beetroot Seeds",
+  "item.nbp-vanilla-plus.dream_seeds": "Dream Seeds",
 
   "item.nbp-vanilla-plus.echo_sword": "Echo Sword",
   "item.nbp-vanilla-plus.echo_pickaxe": "Echo Pickaxe",
@@ -14,6 +18,7 @@
   "item.nbp-vanilla-plus.echo_shovel": "Echo Shovel",
   "item.nbp-vanilla-plus.echo_hoe": "Echo Hoe",
   "item.nbp-vanilla-plus.echo_spear": "Echo Spear",
+  "item.nbp-vanilla-plus.echo_bow": "Echo Bow",
 
   "item.nbp-vanilla-plus.echo_helmet": "Echo Helmet",
   "item.nbp-vanilla-plus.echo_chestplate": "Echo Chestplate",
@@ -30,10 +35,24 @@
   "block.nbp-vanilla-plus.echo_block": "Block of Echo",
   "block.nbp-vanilla-plus.echo_magma": "Echo Magma Block",
   "block.nbp-vanilla-plus.reinforced_obsidian": "Reinforced Obsidian",
+  "block.nbp-vanilla-plus.obsidian_redstone_lamp": "Obsidian Redstone Lamp",
 
-  "block.nbp-vanilla-plus.strange_beetroot_crp[": "Strange Beetroot Crop",
+  "block.nbp-vanilla-plus.strange_beetroot_crop": "Strange Beetroot Crop",
+  "block.nbp-vanilla-plus.amethyst_sweet_berries_bush": "Amethyst Sweet Berries Bush",
+
+  "block.nbp-vanilla-plus.dream_petals_green": "Green Dream Petals",
+  "block.nbp-vanilla-plus.dream_petals_blue": "Blue Dream Petals",
+  "block.nbp-vanilla-plus.dream_petals_purple": "Purple Dream Petals",
+  "block.nbp-vanilla-plus.dream_petals_light_blue": "Light Blue Dream Petals",
 
 
 
-  "creativemodetab.nbp-vanilla-plus.mod_content": "NikiBroPol Vanilla Plus"
+  "creativemodetab.nbp-vanilla-plus.mod_content": "NikiBroPol Vanilla Plus",
+
+  "tooltip.nbp-vanilla-plus.echo_upgrade_smithing_template.applies_to": "Netherite Equipment",
+  "tooltip.nbp-vanilla-plus.echo_upgrade_smithing_template.ingredients": "Echo Ingot",
+  "tooltip.nbp-vanilla-plus.echo_upgrade_smithing_template.base_slot_description": "Add Netherite equipment",
+  "tooltip.nbp-vanilla-plus.echo_upgrade_smithing_template.additions_slot_description": "Add Echo Ingot",
+  "tooltip.nbp-vanilla-plus.recovery_shard.last_death_coordinates": "Last death coordinates:",
+  "item.nbpvanillaplus.recovery_shard.no_death_yet": "No Death Yet"
 }
