@@ -158,18 +158,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .save(output, "amethyst_sweet_berries_shard_craft");
 
                 nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ECHO_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ECHO_BLOCK);
-                shapeless(RecipeCategory.MISC, ModItems.ECHO_INGOT, 9)
-                        .requires(ModBlocks.ECHO_BLOCK)
-                        .unlockedBy(getHasName(ModBlocks.ECHO_BLOCK), has(ModBlocks.ECHO_BLOCK))
-                        .group("echo_block")
-                        .save(output, "echo_block_to_ingots");
 
                 nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ECHO_FRAGMENT, RecipeCategory.MISC, Items.ECHO_SHARD);
-                shapeless(RecipeCategory.MISC, ModItems.ECHO_FRAGMENT, 9)
-                        .requires(Items.ECHO_SHARD)
-                        .unlockedBy(getHasName(Items.ECHO_SHARD), has(Items.ECHO_SHARD))
-                        .group("echo_fragment")
-                        .save(output, "echo_shard_to_fragments");
 
                 shapeless(RecipeCategory.REDSTONE, ModBlocks.OBSIDIAN_REDSTONE_LAMP)
                         .requires(Blocks.OBSIDIAN)
