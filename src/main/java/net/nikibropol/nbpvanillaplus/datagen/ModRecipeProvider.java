@@ -99,6 +99,124 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("echo_scrap")
                         .save(output, "echo_scrap_craft");
 
+                shaped(RecipeCategory.MISC, Items.ECHO_SHARD, 4)
+                        .pattern("VCE")
+                        .pattern("SKD")
+                        .pattern("BWG")
+                        .define('V', Items.SCULK_VEIN)
+                        .define('C', Blocks.SCULK_CATALYST)
+                        .define('E', Items.EXPERIENCE_BOTTLE)
+                        .define('S', Items.SCULK_SENSOR)
+                        .define('K', Items.CALIBRATED_SCULK_SENSOR)
+                        .define('D', Items.MUSIC_DISC_5)
+                        .define('B', Blocks.SCULK)
+                        .define('W', Items.SCULK_SHRIEKER)
+                        .define('G', Items.ENCHANTED_GOLDEN_APPLE)
+                        .unlockedBy(getHasName(Items.SCULK_VEIN), has(Items.SCULK_VEIN))
+                        .unlockedBy(getHasName(Blocks.SCULK_CATALYST), has(Blocks.SCULK_CATALYST))
+                        .unlockedBy(getHasName(Items.EXPERIENCE_BOTTLE), has(Items.EXPERIENCE_BOTTLE))
+                        .unlockedBy(getHasName(Items.SCULK_SENSOR), has(Items.SCULK_SENSOR))
+                        .unlockedBy(getHasName(Items.CALIBRATED_SCULK_SENSOR), has(Items.CALIBRATED_SCULK_SENSOR))
+                        .unlockedBy(getHasName(Items.MUSIC_DISC_5), has(Items.MUSIC_DISC_5))
+                        .unlockedBy(getHasName(Blocks.SCULK), has(Items.SCULK))
+                        .unlockedBy(getHasName(Items.SCULK_SHRIEKER), has(Items.SCULK_SHRIEKER))
+                        .unlockedBy(getHasName(Items.ENCHANTED_GOLDEN_APPLE), has(Items.ENCHANTED_GOLDEN_APPLE))
+                        .group("echo_shard")
+                        .save(output, "echo_shard_craft");
+
+                shaped(RecipeCategory.MISC, ModItems.ECHOBERRY)
+                        .pattern("SSS")
+                        .pattern("SBS")
+                        .pattern("SSS")
+                        .define('S', Items.SCULK_VEIN)
+                        .define('B', Items.GLOW_BERRIES)
+                        .unlockedBy(getHasName(Items.SCULK_VEIN), has(Items.SCULK_VEIN))
+                        .unlockedBy(getHasName(Items.GLOW_BERRIES), has(Items.GLOW_BERRIES))
+                        .group("echoberry")
+                        .save(output, "echoberry_sculk_craft");
+
+                shaped(RecipeCategory.MISC, ModItems.ECHOBERRY, 8)
+                        .pattern("BBB")
+                        .pattern("BEB")
+                        .pattern("BBB")
+                        .define('E', Items.ECHO_SHARD)
+                        .define('B', Items.GLOW_BERRIES)
+                        .unlockedBy(getHasName(Items.ECHO_SHARD), has(Items.ECHO_SHARD))
+                        .unlockedBy(getHasName(Items.GLOW_BERRIES), has(Items.GLOW_BERRIES))
+                        .group("echoberry")
+                        .save(output, "echoberry_shard_craft");
+
+                shaped(RecipeCategory.MISC, ModItems.AMETHYST_SWEET_BERRIES, 8)
+                        .pattern("BBB")
+                        .pattern("BAB")
+                        .pattern("BBB")
+                        .define('A', Items.AMETHYST_SHARD)
+                        .define('B', Items.SWEET_BERRIES)
+                        .unlockedBy(getHasName(Items.AMETHYST_SHARD), has(Items.AMETHYST_SHARD))
+                        .unlockedBy(getHasName(Items.SWEET_BERRIES), has(Items.SWEET_BERRIES))
+                        .group("amethyst_sweet_berries")
+                        .save(output, "amethyst_sweet_berries_shard_craft");
+
+                nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ECHO_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ECHO_BLOCK);
+
+                nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ECHO_FRAGMENT, RecipeCategory.MISC, Items.ECHO_SHARD);
+
+                shapeless(RecipeCategory.REDSTONE, ModBlocks.OBSIDIAN_REDSTONE_LAMP)
+                        .requires(Blocks.OBSIDIAN)
+                        .requires(Blocks.REDSTONE_LAMP)
+                        .unlockedBy(getHasName(Blocks.REDSTONE_LAMP), has(Blocks.REDSTONE_LAMP))
+                        .group("obsidian_redstone_lamp")
+                        .save(output, "obsidian_redstone_lamp_craft");
+
+                shapeless(RecipeCategory.MISC, ModItems.FUSED_ECHO_SHARD)
+                        .requires(Items.ECHO_SHARD, 2)
+                        .unlockedBy(getHasName(Items.ECHO_SHARD), has(Items.ECHO_SHARD))
+                        .group("fused_echo_shard")
+                        .save(output, "fused_echo_shard_craft");
+
+                shapeless(RecipeCategory.TOOLS, ModItems.RECOVERY_SHARD)
+                        .requires(ModItems.FUSED_ECHO_SHARD)
+                        .requires(Items.RECOVERY_COMPASS)
+                        .unlockedBy(getHasName(ModItems.FUSED_ECHO_SHARD), has(ModItems.FUSED_ECHO_SHARD))
+                        .unlockedBy(getHasName(Items.RECOVERY_COMPASS), has(Items.RECOVERY_COMPASS))
+                        .group("recovery_shard")
+                        .save(output, "recovery_shard_craft");
+
+                shaped(RecipeCategory.COMBAT, ModItems.ECHO_BOW)
+                        .pattern(" E")
+                        .pattern("EB")
+                        .define('E', ModItems.FUSED_ECHO_SHARD)
+                        .define('B', Items.BOW)
+                        .unlockedBy(getHasName(ModItems.FUSED_ECHO_SHARD), has(ModItems.FUSED_ECHO_SHARD))
+                        .group("echo_bow")
+                        .save(output, "echo_bow_craft");
+
+                shapeless(RecipeCategory.MISC, ModItems.DREAM_SEEDS)
+                        .requires(ModBlocks.DREAM_PETALS_GREEN)
+                        .requires(ModBlocks.DREAM_PETALS_BLUE)
+                        .requires(ModBlocks.DREAM_PETALS_PURPLE)
+                        .requires(ModBlocks.DREAM_PETALS_LIGHT_BLUE)
+                        .unlockedBy(getHasName(ModItems.DREAM_SEEDS), has(ModItems.DREAM_SEEDS))
+                        .group("dream_seeds")
+                        .save(output, "dream_seeds_craft");
+
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_INGOT, RecipeCategory.MISC, Items.HEAVY_CORE, ModItems.ECHO_INGOT, output);
+
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_SWORD, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_SWORD, output);
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, ModItems.ECHO_INGOT, ModItems.ECHO_PICKAXE, output);
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_AXE, RecipeCategory.TOOLS, ModItems.ECHO_INGOT, ModItems.ECHO_AXE, output);
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, ModItems.ECHO_INGOT, ModItems.ECHO_SHOVEL, output);
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_HOE, RecipeCategory.TOOLS, ModItems.ECHO_INGOT, ModItems.ECHO_HOE, output);
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_SPEAR, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_SPEAR, output);
+
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_HELMET, output);
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_CHESTPLATE, output);
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_LEGGINGS, output);
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_BOOTS, output);
+
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_HORSE_ARMOR, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_HORSE_ARMOR, output);
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_NAUTILUS_ARMOR, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_NAUTILUS_ARMOR, output);
+
                 shaped(RecipeCategory.MISC, Items.LIGHT, 16)
                         .pattern("IGR")
                         .pattern("LEH")
@@ -130,7 +248,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("WWW")
                         .define('W', ItemTags.LOGS)
                         .unlockedBy("has_log", has(ItemTags.LOGS))
-                        .group("chest_crafting")
+                        .group("chest")
                         .save(output, "logs_to_chest_craft");
 
                 shaped(RecipeCategory.MISC, Items.STICK, 16)
@@ -138,7 +256,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("W")
                         .define('W', ItemTags.LOGS)
                         .unlockedBy("has_log", has(ItemTags.LOGS))
-                        .group("stick_crafting")
+                        .group("stick")
                         .save(output, "logs_to_stick_craft");
 
                 shaped(RecipeCategory.MISC, Items.CHEST, 2)
@@ -147,7 +265,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("BBB")
                         .define('B', ItemTags.BAMBOO_BLOCKS)
                         .unlockedBy("has_log", has(ItemTags.BAMBOO_BLOCKS))
-                        .group("chest_crafting")
+                        .group("chest")
                         .save(output, "bamboo_logs_to_chest_craft");
 
                 shaped(RecipeCategory.MISC, Items.STICK, 8)
@@ -155,7 +273,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("B")
                         .define('B', ItemTags.BAMBOO_BLOCKS)
                         .unlockedBy("has_log", has(ItemTags.BAMBOO_BLOCKS))
-                        .group("stick_crafting")
+                        .group("stick")
                         .save(output, "bamboo_logs_to_stick_craft");
 
                 shaped(RecipeCategory.MISC, ModItems.COBBLER)
@@ -168,27 +286,30 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("cobbler_craft")
                         .save(output, "cobbler_craft");
 
-                nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ECHO_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ECHO_BLOCK);
-                shapeless(RecipeCategory.MISC, ModItems.ECHO_INGOT, 9)
-                        .requires(ModBlocks.ECHO_BLOCK)
-                        .unlockedBy(getHasName(ModBlocks.ECHO_BLOCK), has(ModBlocks.ECHO_BLOCK));
+                shapeless(RecipeCategory.MISC, Items.DYE.lime())
+                        .requires(ModBlocks.DREAM_PETALS_GREEN)
+                        .unlockedBy("has_green_dream_petals",has(ModBlocks.DREAM_PETALS_GREEN))
+                        .group("green_dye")
+                        .save(output, "green_dye_from_green_dream_petals");
 
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_INGOT, RecipeCategory.MISC, Items.HEAVY_CORE, ModItems.ECHO_INGOT, output);
+                shapeless(RecipeCategory.MISC, Items.DYE.blue())
+                        .requires(ModBlocks.DREAM_PETALS_BLUE)
+                        .unlockedBy("has_blue_dream_petals",has(ModBlocks.DREAM_PETALS_BLUE))
+                        .group("blue_dye")
+                        .save(output, "blue_dye_from_blue_dream_petals");
 
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_SWORD, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_SWORD, output);
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, ModItems.ECHO_INGOT, ModItems.ECHO_PICKAXE, output);
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_AXE, RecipeCategory.TOOLS, ModItems.ECHO_INGOT, ModItems.ECHO_AXE, output);
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, ModItems.ECHO_INGOT, ModItems.ECHO_SHOVEL, output);
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_HOE, RecipeCategory.TOOLS, ModItems.ECHO_INGOT, ModItems.ECHO_HOE, output);
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_SPEAR, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_SPEAR, output);
+                shapeless(RecipeCategory.MISC, Items.DYE.purple())
+                        .requires(ModBlocks.DREAM_PETALS_PURPLE)
+                        .unlockedBy("has_purple_dream_petals",has(ModBlocks.DREAM_PETALS_PURPLE))
+                        .group("purple_dye")
+                        .save(output, "purple_dye_from_purple_dream_petals");
 
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_HELMET, output);
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_CHESTPLATE, output);
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_LEGGINGS, output);
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_BOOTS, output);
+                shapeless(RecipeCategory.MISC, Items.DYE.lightBlue())
+                        .requires(ModBlocks.DREAM_PETALS_LIGHT_BLUE)
+                        .unlockedBy("has_light_blue_dream_petals",has(ModBlocks.DREAM_PETALS_LIGHT_BLUE))
+                        .group("light_blue_dye")
+                        .save(output, "light_blue_dye_from_light_blue_dream_petals");
 
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_HORSE_ARMOR, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_HORSE_ARMOR, output);
-                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_NAUTILUS_ARMOR, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_NAUTILUS_ARMOR, output);
             }
         };
     }

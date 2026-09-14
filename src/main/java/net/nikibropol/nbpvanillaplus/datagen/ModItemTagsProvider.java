@@ -23,6 +23,8 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ItemTags.HOES).add(ModItems.getRK(ModItems.ECHO_HOE));
         tag(ItemTags.SPEARS).add(ModItems.getRK(ModItems.ECHO_SPEAR));
 
+        tag(ItemTags.BOW_ENCHANTABLE).add(ModItems.getRK(ModItems.ECHO_BOW));
+
         tag(ItemTags.HEAD_ARMOR).add(ModItems.getRK(ModItems.ECHO_HELMET));
         tag(ItemTags.CHEST_ARMOR).add(ModItems.getRK(ModItems.ECHO_CHESTPLATE));
         tag(ItemTags.LEG_ARMOR).add(ModItems.getRK(ModItems.ECHO_LEGGINGS));

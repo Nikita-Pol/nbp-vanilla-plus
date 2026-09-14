@@ -11,7 +11,18 @@ public class ModTags {
     public static class Blocks{
         public static final TagKey<Block> NEEDS_ECHO_TOOL = createTag("needs_echo_tool");
         public static final TagKey<Block> INCORRECT_FOR_ECHO_TOOL = createTag("incorrect_for_echo_tool");
-
+        public static final TagKey<Block> AMETHYST_BUSH_PLACEABLE = TagKey.create(
+                Registries.BLOCK,
+                Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "amethyst_bush_placeable")
+        );
+        public static final TagKey<Block> ECHO_VINES_PLACEABLE = TagKey.create(
+                Registries.BLOCK,
+                Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "echo_vines_placeable")
+        );
+        public static final TagKey<Block> DREAM_PETALS = TagKey.create(
+                Registries.BLOCK,
+                Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "dream_petals")
+        );
         private static TagKey<Block> createTag(String name){
             return  TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name));
         }
