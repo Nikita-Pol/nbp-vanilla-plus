@@ -52,6 +52,8 @@ public class ModModelProvider extends FabricModelProvider {
         ModBlockModelGenerators.generateDreamPetals(blockModelGenerators, ModBlocks.DREAM_PETALS_LIGHT_BLUE);
         ModBlockModelGenerators.generateDreamPetals(blockModelGenerators, ModBlocks.DREAM_PETALS_PURPLE);
 
+        ModBlockModelGenerators.generateDreamEchoStatue(blockModelGenerators, ModBlocks.DREAM_ECHO_STATUE);
+
     }
 
     @Override
@@ -73,6 +75,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerators.createFlatItemModel(ModItems.ECHO_BOW, ModelTemplates.BOW);
         itemModelGenerators.generateBow(ModItems.ECHO_BOW);
+        itemModelGenerators.generateFlatItem(ModItems.ECHO_ARROW, ModelTemplates.FLAT_ITEM);
 
 
         itemModelGenerators.generateFlatItem(ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
@@ -94,11 +97,23 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(ModItems.STRANGE_BEETROOT, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_CARROT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_APPLE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_POTATO, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_BEETROOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_STRANGE_BEETROOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_SWEET_BERRIES, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_AMETHYST_SWEET_BERRIES, ModelTemplates.FLAT_ITEM);
+
 
         itemModelGenerators.generateFlatItem(ModBlocks.DREAM_PETALS_GREEN.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.DREAM_PETALS_BLUE.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.DREAM_PETALS_LIGHT_BLUE.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.DREAM_PETALS_PURPLE.asItem(), ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerators.declareCustomModelItem(ModItems.EXTENDER);
+        itemModelGenerators.declareCustomModelItem(ModItems.EXTENDER_AMETHYST);
+        itemModelGenerators.declareCustomModelItem(ModItems.EXTENDER_ECHO);
 
     }
 

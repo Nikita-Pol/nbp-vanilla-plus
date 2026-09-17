@@ -1,6 +1,7 @@
 package net.nikibropol.nbpvanillaplus.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -15,9 +16,7 @@ import net.minecraft.world.level.block.Block;
 import net.nikibropol.nbpvanillaplus.NBPVanillaPlus;
 import net.nikibropol.nbpvanillaplus.block.ModBlocks;
 import net.nikibropol.nbpvanillaplus.food.ModFoods;
-import net.nikibropol.nbpvanillaplus.item.custom.CobblerItem;
-import net.nikibropol.nbpvanillaplus.item.custom.ModSmithingTemplateItem;
-import net.nikibropol.nbpvanillaplus.item.custom.RecoveryShardItem;
+import net.nikibropol.nbpvanillaplus.item.custom.*;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -66,6 +65,21 @@ public class ModItems {
     public static final Item STRANGE_BEETROOT_SEEDS = registerItem("strange_beetroot_seeds",
             properties -> new BlockItem(ModBlocks.STRANGE_BEETROOT_CROP, properties.useItemDescriptionPrefix()));
 
+    public static final Item BUNCH_OF_CARROT = registerItem("bunch_of_carrot",
+            properties -> new Item(properties.useItemDescriptionPrefix()));
+    public static final Item BUNCH_OF_APPLE = registerItem("bunch_of_apple",
+            properties -> new Item(properties.useItemDescriptionPrefix()));
+    public static final Item BUNCH_OF_POTATO = registerItem("bunch_of_potato",
+            properties -> new Item(properties.useItemDescriptionPrefix()));
+    public static final Item BUNCH_OF_BEETROOT = registerItem("bunch_of_beetroot",
+            properties -> new Item(properties.useItemDescriptionPrefix()));
+    public static final Item BUNCH_OF_STRANGE_BEETROOT = registerItem("bunch_of_strange_beetroot",
+            properties -> new Item(properties.useItemDescriptionPrefix()));
+    public static final Item BUNCH_OF_SWEET_BERRIES = registerItem("bunch_of_sweet_berries",
+            properties -> new Item(properties.useItemDescriptionPrefix()));
+    public static final Item BUNCH_OF_AMETHYST_SWEET_BERRIES = registerItem("bunch_of_amethyst_sweet_berries",
+            properties -> new Item(properties.useItemDescriptionPrefix()));
+
     public static final Item DREAM_SEEDS = registerItem("dream_seeds",
             properties -> new PlaceOnWaterBlockItem(ModBlocks.DREAM_FLOWER, properties.useItemDescriptionPrefix()));
 
@@ -110,7 +124,17 @@ public class ModItems {
             properties -> new Item(properties.nautilusArmor(ModArmorMaterials.ECHO_ARMOR_MATERIAL).fireResistant().rarity(Rarity.UNCOMMON)));
 
     public static final Item ECHO_BOW = registerItem("echo_bow",
-            properties -> new BowItem(properties.durability(537).rarity(Rarity.UNCOMMON)));
+            properties -> new EchoBowItem(properties.durability(537).rarity(Rarity.UNCOMMON)));
+    public static final Item ECHO_ARROW = registerItem("echo_arrow",
+            properties -> new EchoArrowItem(properties.rarity(Rarity.UNCOMMON)));
+
+    public static final Item EXTENDER = registerItem("extender",
+            properties -> new ExtenderItem(properties.stacksTo(1).rarity(Rarity.RARE), 1));
+    public static final Item EXTENDER_AMETHYST = registerItem("extender_amethyst",
+            properties -> new ExtenderItem(properties.stacksTo(1).rarity(Rarity.RARE), 2));
+    public static final Item EXTENDER_ECHO = registerItem("extender_echo",
+            properties -> new ExtenderItem(properties.stacksTo(1).rarity(Rarity.RARE), 4));
+
 
     public static ResourceKey<Item> getRK(Item item) {
         return BuiltInRegistries.ITEM.getResourceKey(item).get();

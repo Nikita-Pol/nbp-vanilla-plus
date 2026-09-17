@@ -53,6 +53,7 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.ECHO_MAGMA);
         dropSelf(ModBlocks.REINFORCED_OBSIDIAN);
         dropSelf(ModBlocks.OBSIDIAN_REDSTONE_LAMP);
+        dropSelf(ModBlocks.DREAM_ECHO_STATUE);
 
         this.add(ModBlocks.STRANGE_BEETROOT_CROP, this.createCropDrops(ModBlocks.STRANGE_BEETROOT_CROP, ModItems.STRANGE_BEETROOT,
                 ModItems.STRANGE_BEETROOT_SEEDS, LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.STRANGE_BEETROOT_CROP)
@@ -83,10 +84,9 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                         .hasProperty(DreamFlowerBlock.AGE, DreamFlowerBlock.MAX_AGE)))
                         .add(LootItem.lootTableItem(ModItems.DREAM_SEEDS)
-                                .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(
-                                        this.registries, 0.125F, 0.0625F))
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                                .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))))));
+                                .apply(ApplyBonusCount.addUniformBonusCount(
+                                        enchantments.getOrThrow(Enchantments.FORTUNE)))
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))))));
 
         this.add(ModBlocks.AMETHYST_SWEET_BERRIES_BUSH, block -> this.applyExplosionDecay(block,
                 LootTable.lootTable().withPool(LootPool.lootPool()

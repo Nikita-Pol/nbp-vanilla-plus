@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.nikibropol.nbpvanillaplus.item.ModItems;
 
 import java.util.concurrent.CompletableFuture;
@@ -24,6 +25,8 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ItemTags.SPEARS).add(ModItems.getRK(ModItems.ECHO_SPEAR));
 
         tag(ItemTags.BOW_ENCHANTABLE).add(ModItems.getRK(ModItems.ECHO_BOW));
+
+        tag(ItemTags.ARROWS).add(ModItems.getRK(ModItems.ECHO_ARROW));
 
         tag(ItemTags.HEAD_ARMOR).add(ModItems.getRK(ModItems.ECHO_HELMET));
         tag(ItemTags.CHEST_ARMOR).add(ModItems.getRK(ModItems.ECHO_CHESTPLATE));

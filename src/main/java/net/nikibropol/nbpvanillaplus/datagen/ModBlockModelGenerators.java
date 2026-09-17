@@ -15,6 +15,7 @@ import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.nikibropol.nbpvanillaplus.block.ModBlocks;
+import net.nikibropol.nbpvanillaplus.block.custom.DreamEchoStatueBlock;
 import net.nikibropol.nbpvanillaplus.block.custom.DreamPetalsBlock;
 
 import java.util.Map;
@@ -43,6 +44,25 @@ public class ModBlockModelGenerators extends BlockModelGenerators{
                         .with(BlockModelGenerators.createBooleanModelDispatch(BlockStateProperties.BERRIES, onBody, offBody))
         );
     }
+
+    public static void generateDreamEchoStatue(BlockModelGenerators generator, Block block) {
+        generator.blockStateOutput.accept(
+                MultiVariantGenerator.dispatch(ModBlocks.DREAM_ECHO_STATUE)
+                        .with(PropertyDispatch.initial(DreamEchoStatueBlock.FACE, DreamEchoStatueBlock.FACING)
+                                .generate((face, facing) -> {
+                                    Quadrant xRot = switch (face) {
+                                        case CEILING -> Quadrant.R180;
+                                        case WALL -> Quadrant.R90;
+                                        case FLOOR -> Quadrant.R0;
+                                    };
+                                    return new MultiVariant(WeightedList.of(
+                                            new Variant(ModelLocationUtils.getModelLocation(ModBlocks.DREAM_ECHO_STATUE))
+                                                    .withXRot(xRot)
+                                                    .withYRot(quadrantFromDirection(facing))));
+                                }))
+        );
+    }
+
 
     private static final ModelTemplate DREAM_PETALS_1 = new ModelTemplate(
             Optional.of(Identifier.fromNamespaceAndPath(

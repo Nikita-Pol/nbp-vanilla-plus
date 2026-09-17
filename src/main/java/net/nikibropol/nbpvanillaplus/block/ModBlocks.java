@@ -38,7 +38,7 @@ public class ModBlocks {
                     .strength(0.5F)
                     .isValidSpawn((statex, blockGetter, blockPos, entityType) -> entityType.fireImmune())
                     .emissiveRendering(var0 -> true)),
-            Rarity.UNCOMMON);
+                    Rarity.UNCOMMON);
     public static final Block REINFORCED_OBSIDIAN = registerBlock("reinforced_obsidian",
             properties -> new Block(properties.strength(200f, 5000f)
                     .requiresCorrectToolForDrops()
@@ -87,6 +87,13 @@ public class ModBlocks {
             properties -> new DreamPetalsBlock(properties.mapColor(MapColor.PLANT).instabreak()
                     .noCollision().sound(SoundType.PINK_PETALS)
                     .pushReaction(PushReaction.DESTROY)));
+
+    public static final Block DREAM_ECHO_STATUE = registerBlock("dream_echo_statue",
+            properties -> new DreamEchoStatueBlock(properties.strength(5f, 1200f)
+                    .requiresCorrectToolForDrops().sound(SoundType.AMETHYST).lightLevel(statex -> 7)
+                    .pushReaction(PushReaction.IGNORE)
+                    .isValidSpawn((statex, blockGetter, blockPos, entityType) -> entityType.fireImmune())),
+                    Rarity.UNCOMMON);
 
 
 

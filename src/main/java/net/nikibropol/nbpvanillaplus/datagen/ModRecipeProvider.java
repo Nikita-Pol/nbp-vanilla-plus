@@ -157,6 +157,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("amethyst_sweet_berries")
                         .save(output, "amethyst_sweet_berries_shard_craft");
 
+                nineBlockStorageRecipes(RecipeCategory.FOOD, Items.CARROT, RecipeCategory.FOOD, ModItems.BUNCH_OF_CARROT);
+                nineBlockStorageRecipes(RecipeCategory.FOOD, Items.APPLE, RecipeCategory.FOOD, ModItems.BUNCH_OF_APPLE);
+                nineBlockStorageRecipes(RecipeCategory.FOOD, Items.POTATO, RecipeCategory.FOOD, ModItems.BUNCH_OF_POTATO);
+                nineBlockStorageRecipes(RecipeCategory.FOOD, Items.BEETROOT, RecipeCategory.FOOD, ModItems.BUNCH_OF_BEETROOT);
+                nineBlockStorageRecipes(RecipeCategory.FOOD, ModItems.STRANGE_BEETROOT, RecipeCategory.FOOD, ModItems.BUNCH_OF_STRANGE_BEETROOT);
+                nineBlockStorageRecipes(RecipeCategory.FOOD, Items.SWEET_BERRIES, RecipeCategory.FOOD, ModItems.BUNCH_OF_SWEET_BERRIES);
+                nineBlockStorageRecipes(RecipeCategory.FOOD, ModItems.AMETHYST_SWEET_BERRIES, RecipeCategory.FOOD, ModItems.BUNCH_OF_AMETHYST_SWEET_BERRIES);
+
                 nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ECHO_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ECHO_BLOCK);
 
                 nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ECHO_FRAGMENT, RecipeCategory.MISC, Items.ECHO_SHARD);
@@ -181,6 +189,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Items.RECOVERY_COMPASS), has(Items.RECOVERY_COMPASS))
                         .group("recovery_shard")
                         .save(output, "recovery_shard_craft");
+
+                shapeless(RecipeCategory.COMBAT, ModItems.ECHO_ARROW)
+                        .requires(ModItems.ECHO_FRAGMENT)
+                        .requires(Items.ARROW)
+                        .unlockedBy(getHasName(ModItems.ECHO_ARROW), has(ModItems.ECHO_ARROW))
+                        .unlockedBy(getHasName(Items.ARROW), has(Items.ARROW))
+                        .group("echo_arrow")
+                        .save(output, "echo_arrow_craft");
 
                 shaped(RecipeCategory.COMBAT, ModItems.ECHO_BOW)
                         .pattern(" E")
@@ -216,6 +232,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
                 Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_HORSE_ARMOR, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_HORSE_ARMOR, output);
                 Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_NAUTILUS_ARMOR, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_NAUTILUS_ARMOR, output);
+
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModItems.EXTENDER, RecipeCategory.TOOLS, ModBlocks.REINFORCED_OBSIDIAN, ModItems.EXTENDER_AMETHYST, output);
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, ModItems.EXTENDER_AMETHYST, RecipeCategory.TOOLS, ModItems.ECHO_INGOT, ModItems.EXTENDER_ECHO, output);
 
                 shaped(RecipeCategory.MISC, Items.LIGHT, 16)
                         .pattern("IGR")

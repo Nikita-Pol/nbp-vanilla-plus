@@ -15,6 +15,8 @@ public class ModDataComponents {
             builder -> builder.persistent(DeathRecord.CODEC).networkSynchronized(DeathRecord.STREAM_CODEC));
     public static final DataComponentType<Boolean> IS_ACTUAL = register("is_actual",
             builder -> builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL));
+    public static final DataComponentType<Integer> ECHO_CHARGE = register("echo_charge",
+            builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
 
     private static <T>DataComponentType<T> register(String name, UnaryOperator<DataComponentType.Builder<T>> builderOperator){
         return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name),

@@ -14,6 +14,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
+import net.nikibropol.nbpvanillaplus.stat.ModStats;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Map;
@@ -48,6 +49,7 @@ public class CobblerItem extends Item {
             level.setBlockAndUpdate(context.getClickedPos(), COBBLER_MAP.get(clickedBlock).defaultBlockState());
             Optional<BlockState> newBlock = this.evaluateNewBlockState(level, pos, player, level.getBlockState(pos));
             context.getItemInHand().hurtAndBreak(1, context.getPlayer(), context.getHand());
+            context.getPlayer().awardStat(ModStats.COBBLER_USED_STAT, 1);
         }
 
 

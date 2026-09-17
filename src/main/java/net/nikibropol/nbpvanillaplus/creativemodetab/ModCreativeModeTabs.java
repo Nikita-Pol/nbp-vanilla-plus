@@ -22,6 +22,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.OBSIDIAN_REDSTONE_LAMP);
                         output.accept(ModBlocks.ECHO_MAGMA);
                         output.accept(ModBlocks.ECHO_BLOCK);
+                        output.accept(ModBlocks.DREAM_PETALS_GREEN);
+                        output.accept(ModBlocks.DREAM_PETALS_BLUE);
+                        output.accept(ModBlocks.DREAM_PETALS_PURPLE);
+                        output.accept(ModBlocks.DREAM_PETALS_LIGHT_BLUE);
+                        output.accept(ModBlocks.DREAM_ECHO_STATUE);
 
                         output.accept(ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE);
                         output.accept(ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE);
@@ -39,6 +44,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ECHO_HOE);
                         output.accept(ModItems.ECHO_SPEAR);
                         output.accept(ModItems.ECHO_BOW);
+                        output.accept(ModItems.ECHO_ARROW);
 
                         output.accept(ModItems.ECHO_HELMET);
                         output.accept(ModItems.ECHO_CHESTPLATE);
@@ -50,16 +56,19 @@ public class ModCreativeModeTabs {
 
                         output.accept(ModItems.STRANGE_BEETROOT_SEEDS);
                         output.accept(ModItems.DREAM_SEEDS);
-                        output.accept(ModBlocks.DREAM_PETALS_GREEN);
-                        output.accept(ModBlocks.DREAM_PETALS_BLUE);
-                        output.accept(ModBlocks.DREAM_PETALS_PURPLE);
-                        output.accept(ModBlocks.DREAM_PETALS_LIGHT_BLUE);
 
                         output.accept(ModItems.ECHOBERRY);
                         output.accept(ModItems.AMETHYST_SWEET_BERRIES);
                         output.accept(ModItems.STRANGE_BEETROOT);
 
+                        output.accept(ModItems.BUNCH_OF_CARROT);
+                        output.accept(ModItems.BUNCH_OF_APPLE);
+                        output.accept(ModItems.BUNCH_OF_POTATO);
+                        output.accept(ModItems.BUNCH_OF_BEETROOT);
+                        output.accept(ModItems.BUNCH_OF_STRANGE_BEETROOT);
+
                         output.accept(ModItems.COBBLER);
+                        output.accept(ModItems.EXTENDER);
 
                     })
                     .build());

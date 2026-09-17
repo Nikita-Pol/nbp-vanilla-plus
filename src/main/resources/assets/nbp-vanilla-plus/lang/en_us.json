@@ -4,6 +4,7 @@
   "item.nbp-vanilla-plus.echo_ingot": "Echo Ingot",
   "item.nbp-vanilla-plus.echo_scrap": "Echo Scrap",
   "item.nbp-vanilla-plus.echo_fragment": "Fragment of Echo",
+  "item.nbp-vanilla-plus.echo_arrow": "Echo Arrow",
 
   "item.nbp-vanilla-plus.echoberry": "Echo Berries",
   "item.nbp-vanilla-plus.amethyst_sweet_berries": "Amethyst Sweet Berries",
@@ -11,6 +12,14 @@
 
   "item.nbp-vanilla-plus.strange_beetroot_seeds": "Strange Beetroot Seeds",
   "item.nbp-vanilla-plus.dream_seeds": "Dream Seeds",
+
+  "item.nbp-vanilla-plus.bunch_of_carrot": "Bunch of Carrots",
+  "item.nbp-vanilla-plus.bunch_of_apple": "Bunch of Apples",
+  "item.nbp-vanilla-plus.bunch_of_potato": "Bunch of Potatoes",
+  "item.nbp-vanilla-plus.bunch_of_beetroot": "Bunch of Beetroots",
+  "item.nbp-vanilla-plus.bunch_of_strange_beetroot": "Bunch of Strange Beetroots",
+  "item.nbp-vanilla-plus.bunch_of_sweet_berries": "Bunch of Beetroots",
+  "item.nbp-vanilla-plus.bunch_of_amethyst_sweet_berries": "Bunch of Strange Beetroots",
 
   "item.nbp-vanilla-plus.echo_sword": "Echo Sword",
   "item.nbp-vanilla-plus.echo_pickaxe": "Echo Pickaxe",
@@ -31,11 +40,15 @@
   "item.nbp-vanilla-plus.echo_upgrade_smithing_template": "Echo Upgrade",
   "item.nbp-vanilla-plus.amethyst_upgrade_smithing_template": "Amethyst Upgrade (WIP)",
   "item.nbp-vanilla-plus.cobbler": "Cobbler",
+  "item.nbp-vanilla-plus.extender": "Extender",
+  "item.nbp-vanilla-plus.extender_amethyst": "Extender Tier 2",
+  "item.nbp-vanilla-plus.extender_echo": "Extender Tier 3",
 
   "block.nbp-vanilla-plus.echo_block": "Block of Echo",
   "block.nbp-vanilla-plus.echo_magma": "Echo Magma Block",
   "block.nbp-vanilla-plus.reinforced_obsidian": "Reinforced Obsidian",
   "block.nbp-vanilla-plus.obsidian_redstone_lamp": "Obsidian Redstone Lamp",
+  "block.nbp-vanilla-plus.dream_echo_statue": "Dream Echo Statue",
 
   "block.nbp-vanilla-plus.strange_beetroot_crop": "Strange Beetroot Crop",
   "block.nbp-vanilla-plus.amethyst_sweet_berries_bush": "Amethyst Sweet Berries Bush",
@@ -46,6 +59,17 @@
   "block.nbp-vanilla-plus.dream_petals_light_blue": "Light Blue Dream Petals",
 
 
+  "painting.nbp-vanilla-plus.broken_eternity.title": "Broken Eternity",
+  "painting.nbp-vanilla-plus.broken_eternity.author": "NikiBroPol",
+  "painting.nbp-vanilla-plus.dusk_to_dawn.title": "Dusk to Dawn",
+  "painting.nbp-vanilla-plus.dusk_to_dawn.author": "NikiBroPol",
+  "painting.nbp-vanilla-plus.nameless_echoes.title": "N A M E L E S S  E C H O E S",
+  "painting.nbp-vanilla-plus.nameless_echoes.author": "NikiBroPol",
+  "painting.nbp-vanilla-plus.ambients.title": "Ambients",
+  "painting.nbp-vanilla-plus.ambients.author": "NikiBroPol",
+
+  "stat.nbp-vanilla-plus.cobbler_used": "Blocks Cobbled",
+  "stat.nbp-vanilla-plus.noted_coordinates_in_recovery_shard": "Noted Coordinates in Recovery Shard",
 
   "creativemodetab.nbp-vanilla-plus.mod_content": "NikiBroPol Vanilla Plus",
 

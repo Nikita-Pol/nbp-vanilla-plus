@@ -22,8 +22,12 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getRK(ModBlocks.ECHO_BLOCK))
                 .add(ModBlocks.getRK(ModBlocks.ECHO_MAGMA))
                 .add(ModBlocks.getRK(ModBlocks.OBSIDIAN_REDSTONE_LAMP))
-                .add(ModBlocks.getRK(ModBlocks.REINFORCED_OBSIDIAN));
+                .add(ModBlocks.getRK(ModBlocks.REINFORCED_OBSIDIAN))
+                .add(ModBlocks.getRK(ModBlocks.DREAM_ECHO_STATUE));
 
+
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.getRK(ModBlocks.DREAM_ECHO_STATUE));
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.getRK(ModBlocks.ECHO_BLOCK))
