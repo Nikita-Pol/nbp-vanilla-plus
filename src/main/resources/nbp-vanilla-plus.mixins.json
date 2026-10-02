@@ -3,7 +3,10 @@
   "package": "net.nikibropol.nbpvanillaplus.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "ExampleMixin"
+    "BlockEntityTypeAccessor",
+    "EntityMixin",
+    "ExampleMixin",
+    "SlotMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -12,6 +15,7 @@
     "requireAnnotations": true
   },
   "client": [
-    "AbstractClientPlayerMixin"
+    "AbstractClientPlayerMixin",
+    "PlayerSwingMixin"
   ]
 }

@@ -21,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.nikibropol.nbpvanillaplus.data.DeathRecord;
 import net.nikibropol.nbpvanillaplus.data.ModDataComponents;
+import net.nikibropol.nbpvanillaplus.stat.ModStats;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
@@ -63,6 +64,8 @@ public class RecoveryShardItem extends Item {
         itemStack.set(ModDataComponents.IS_ACTUAL, true);
 
         level.playSound(null, clickedPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+        context.getPlayer().awardStat(ModStats.NOTED_COORDINATES_IN_RECOVERY_SHARD, 1);
 
         return InteractionResult.SUCCESS;
     }

@@ -1,0 +1,20 @@
+# See https://stonecutter.kikugie.dev/wiki/config/properties#centralized-properties
+mod.id = "nbpvanillaplus"
+mod.name = "NBP Vanilla Plus"
+mod.group = "net.nikibropol.nbpvanillaplus"
+mod.version = "0.3.0"
+
+deps.fabric_loader = "0.19.5"
+loomx.loom_version = "1.17-SNAPSHOT"
+
+["26.2"]
+mod.mc_compat = "~26.2"
+mod.mc_releases = ["26.2"]
+
+deps.fabric_api = "0.159.0+26.2"
+
+["26.3"]
+mod.mc_compat = "~26.3"
+mod.mc_releases = ["26.3"]
+
+deps.fabric_api = "0.160.7+26.3"
