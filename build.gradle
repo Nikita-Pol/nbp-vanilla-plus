@@ -4,7 +4,8 @@ plugins {
 	id 'dev.kikugie.stonecutter'
 }
 
-version = "${property('mod.version')}+${stonecutter.current.version}"
+version = "${property('mod.version')}-${stonecutter.current.version}"
+base.archivesName = "nbp-vanilla-plus"
 group = property('mod.group')
 
 repositories {
