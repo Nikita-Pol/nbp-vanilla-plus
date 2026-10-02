@@ -18,6 +18,9 @@
 		"main": [
 			"net.nikibropol.nbpvanillaplus.NBPVanillaPlus"
 		],
+		"client": [
+			"net.nikibropol.nbpvanillaplus.NBPVanillaPlusClient"
+		],
 		"fabric-datagen": [
 			"net.nikibropol.nbpvanillaplus.NBPVanillaPlusDataGenerator"
 		]

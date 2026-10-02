@@ -29,10 +29,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWit
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.nikibropol.nbpvanillaplus.block.ModBlocks;
-import net.nikibropol.nbpvanillaplus.block.custom.AmethystSweetBerriesBushBlock;
-import net.nikibropol.nbpvanillaplus.block.custom.DreamFlowerBlock;
-import net.nikibropol.nbpvanillaplus.block.custom.DreamPetalsBlock;
-import net.nikibropol.nbpvanillaplus.block.custom.StrangeBeetrootCropBlock;
+import net.nikibropol.nbpvanillaplus.block.custom.*;
 import net.nikibropol.nbpvanillaplus.item.ModItems;
 import net.nikibropol.nbpvanillaplus.tags.ModTags;
 import org.lwjgl.system.macosx.MacOSXLibraryDL;
@@ -49,15 +46,97 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
     public void generate() {
         var enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 
+        dropSelf(ModBlocks.DREAM_GREEN_WOOD);
+        dropSelf(ModBlocks.DREAM_GREEN_LOG);
+        dropSelf(ModBlocks.STRIPPED_DREAM_GREEN_WOOD);
+        dropSelf(ModBlocks.STRIPPED_DREAM_GREEN_LOG);
+        dropSelf(ModBlocks.DREAM_GREEN_PLANKS);
+        add(ModBlocks.DREAM_GREEN_LEAVES, block -> createLeavesDrops(block, ModBlocks.DREAM_GREEN_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.DREAM_GREEN_WOOD_STAIRS);
+        add(ModBlocks.DREAM_GREEN_WOOD_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.DREAM_GREEN_WOOD_BUTTON);
+        dropSelf(ModBlocks.DREAM_GREEN_WOOD_PRESSURE_PLATE);
+        dropSelf(ModBlocks.DREAM_GREEN_WOOD_FENCE);
+        dropSelf(ModBlocks.DREAM_GREEN_WOOD_FENCE_GATE);
+        add(ModBlocks.DREAM_GREEN_WOOD_DOOR, this::createDoorTable);
+        dropSelf(ModBlocks.DREAM_GREEN_WOOD_TRAPDOOR);
+        dropSelf(ModBlocks.DREAM_GREEN_WOOD_SIGN);
+        dropSelf(ModBlocks.DREAM_GREEN_WOOD_HANGING_SIGN);
+        dropSelf(ModBlocks.DREAM_GREEN_SAPLING);
+        add(ModBlocks.POTTED_DREAM_GREEN_SAPLING, block -> createPotFlowerItemTable(ModBlocks.DREAM_GREEN_SAPLING));
+
+        dropSelf(ModBlocks.DREAM_PURPLE_WOOD);
+        dropSelf(ModBlocks.DREAM_PURPLE_LOG);
+        dropSelf(ModBlocks.STRIPPED_DREAM_PURPLE_WOOD);
+        dropSelf(ModBlocks.STRIPPED_DREAM_PURPLE_LOG);
+        dropSelf(ModBlocks.DREAM_PURPLE_PLANKS);
+        add(ModBlocks.DREAM_PURPLE_LEAVES, block -> createLeavesDrops(block, ModBlocks.DREAM_PURPLE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.DREAM_PURPLE_WOOD_STAIRS);
+        add(ModBlocks.DREAM_PURPLE_WOOD_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.DREAM_PURPLE_WOOD_BUTTON);
+        dropSelf(ModBlocks.DREAM_PURPLE_WOOD_PRESSURE_PLATE);
+        dropSelf(ModBlocks.DREAM_PURPLE_WOOD_FENCE);
+        dropSelf(ModBlocks.DREAM_PURPLE_WOOD_FENCE_GATE);
+        add(ModBlocks.DREAM_PURPLE_WOOD_DOOR, this::createDoorTable);
+        dropSelf(ModBlocks.DREAM_PURPLE_WOOD_TRAPDOOR);
+        dropSelf(ModBlocks.DREAM_PURPLE_WOOD_SIGN);
+        dropSelf(ModBlocks.DREAM_PURPLE_WOOD_HANGING_SIGN);
+        dropSelf(ModBlocks.DREAM_PURPLE_SAPLING);
+        add(ModBlocks.POTTED_DREAM_PURPLE_SAPLING, block -> createPotFlowerItemTable(ModBlocks.DREAM_PURPLE_SAPLING));
+
+        dropSelf(ModBlocks.DREAM_BLUE_WOOD);
+        dropSelf(ModBlocks.DREAM_BLUE_LOG);
+        dropSelf(ModBlocks.STRIPPED_DREAM_BLUE_WOOD);
+        dropSelf(ModBlocks.STRIPPED_DREAM_BLUE_LOG);
+        dropSelf(ModBlocks.DREAM_BLUE_PLANKS);
+        add(ModBlocks.DREAM_BLUE_LEAVES, block -> createLeavesDrops(block, ModBlocks.DREAM_BLUE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.DREAM_BLUE_WOOD_STAIRS);
+        add(ModBlocks.DREAM_BLUE_WOOD_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.DREAM_BLUE_WOOD_BUTTON);
+        dropSelf(ModBlocks.DREAM_BLUE_WOOD_PRESSURE_PLATE);
+        dropSelf(ModBlocks.DREAM_BLUE_WOOD_FENCE);
+        dropSelf(ModBlocks.DREAM_BLUE_WOOD_FENCE_GATE);
+        add(ModBlocks.DREAM_BLUE_WOOD_DOOR, this::createDoorTable);
+        dropSelf(ModBlocks.DREAM_BLUE_WOOD_TRAPDOOR);
+        dropSelf(ModBlocks.DREAM_BLUE_WOOD_SIGN);
+        dropSelf(ModBlocks.DREAM_BLUE_WOOD_HANGING_SIGN);
+        dropSelf(ModBlocks.DREAM_BLUE_SAPLING);
+        add(ModBlocks.POTTED_DREAM_BLUE_SAPLING, block -> createPotFlowerItemTable(ModBlocks.DREAM_BLUE_SAPLING));
+
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_WOOD);
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_LOG);
+        dropSelf(ModBlocks.STRIPPED_DREAM_LIGHT_BLUE_WOOD);
+        dropSelf(ModBlocks.STRIPPED_DREAM_LIGHT_BLUE_LOG);
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_PLANKS);
+        add(ModBlocks.DREAM_LIGHT_BLUE_LEAVES, block -> createLeavesDrops(block, ModBlocks.DREAM_LIGHT_BLUE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_WOOD_STAIRS);
+        add(ModBlocks.DREAM_LIGHT_BLUE_WOOD_SLAB, this::createSlabItemTable);
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_WOOD_BUTTON);
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_WOOD_PRESSURE_PLATE);
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_WOOD_FENCE);
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_WOOD_FENCE_GATE);
+        add(ModBlocks.DREAM_LIGHT_BLUE_WOOD_DOOR, this::createDoorTable);
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_WOOD_TRAPDOOR);
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_WOOD_SIGN);
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_WOOD_HANGING_SIGN);
+        dropSelf(ModBlocks.DREAM_LIGHT_BLUE_SAPLING);
+        add(ModBlocks.POTTED_DREAM_LIGHT_BLUE_SAPLING, block -> createPotFlowerItemTable(ModBlocks.DREAM_LIGHT_BLUE_SAPLING));
+
         dropSelf(ModBlocks.ECHO_BLOCK);
         dropSelf(ModBlocks.ECHO_MAGMA);
         dropSelf(ModBlocks.REINFORCED_OBSIDIAN);
+        dropSelf(ModBlocks.DREAMED_OBSIDIAN);
+        dropSelf(ModBlocks.DREAMED_POWERED_OBSIDIAN);
         dropSelf(ModBlocks.OBSIDIAN_REDSTONE_LAMP);
         dropSelf(ModBlocks.DREAM_ECHO_STATUE);
 
         this.add(ModBlocks.STRANGE_BEETROOT_CROP, this.createCropDrops(ModBlocks.STRANGE_BEETROOT_CROP, ModItems.STRANGE_BEETROOT,
                 ModItems.STRANGE_BEETROOT_SEEDS, LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.STRANGE_BEETROOT_CROP)
                         .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(StrangeBeetrootCropBlock.AGE, StrangeBeetrootCropBlock.MAX_AGE))));
+
+        this.add(ModBlocks.FLOWTAREM_CROP, this.createCropDrops(ModBlocks.FLOWTAREM_CROP, ModItems.FLOWTAREM,
+                ModItems.FLOWTAREM_SEEDS, LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.FLOWTAREM_CROP)
+                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(FlowtaremCropBlock.AGE, FlowtaremCropBlock.MAX_AGE))));
 
         this.add(ModBlocks.DREAM_FLOWER, LootTable.lootTable()
                 .withPool(this.applyExplosionDecay(ModBlocks.DREAM_FLOWER, LootPool.lootPool()
@@ -131,7 +210,7 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
                 .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))));
     }
 
-    public static void registerModLootTableModifiers() {
+    /*public static void registerModLootTableModifiers() {
         LootTableEvents.MODIFY.register((key, tableBuilder, source, holder) -> {
             if (key.identifier().equals(
                     Identifier.withDefaultNamespace("gameplay/sniffer_digging"))) {
@@ -156,5 +235,5 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
                 ));
             }
         });
-    }
+    }*/
 }

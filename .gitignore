@@ -42,3 +42,14 @@ replay_*.log
 # Generated sources
 # The trailing * is important, otherwise Git wouldn't evaluate the directories at all and we wouldn't be able to un-ignore some of them.
 **/src/generated/*
+
+# Stonecutter
+versions/*/build/
+versions/*/.gradle/
+versions/*/src/main/generated/
+versions/*/src/client/generated/
+.stonecutter-cache/
+
+# Save run configurations
+#!.idea/runConfigurations/
+#!.idea/runConfigurations/**

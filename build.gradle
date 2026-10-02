@@ -1,7 +1,11 @@
 plugins {
-	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'net.fabricmc.fabric-loom' version '1.17-SNAPSHOT'
 	id 'maven-publish'
+	id 'dev.kikugie.stonecutter'
 }
+
+version = "${property('mod.version')}+${stonecutter.current.version}"
+group = property('mod.group')
 
 repositories {
 	// Add repositories to retrieve artifacts from in here.
@@ -9,6 +13,7 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+	maven { url "https://maven.shedaniel.me" }
 }
 
 fabricApi {
@@ -18,15 +23,21 @@ fabricApi {
 }
 
 dependencies {
-	// To change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	// To change the versions see stonecutter.properties.toml
+	minecraft "com.mojang:minecraft:${stonecutter.current.version}"
+	implementation "net.fabricmc:fabric-loader:${property('deps.fabric_loader')}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${property('deps.fabric_api')}"
+
+
+	/*implementation "me.shedaniel:RoughlyEnoughItems-api-fabric:26.2.820"
+	implementation "me.shedaniel:RoughlyEnoughItems-fabric:26.2.820"*/
 }
 
 processResources {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
 	def version = project.version
 	inputs.property "version", version
 
@@ -50,11 +61,20 @@ java {
 }
 
 jar {
-	def projectName = project.name
+	def projectName = project.property('mod.id')
 	inputs.property "projectName", projectName
 
 	from("LICENSE") {
 		rename { "${it}_$projectName"}
+	}
+}
+
+if (stonecutter.current.isActive) {
+	loom {
+		runConfigs.all {
+			ideConfigGenerated = true
+			runDir "../../run"
+		}
 	}
 }
 

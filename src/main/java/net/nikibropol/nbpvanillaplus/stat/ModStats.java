@@ -21,6 +21,6 @@ public class ModStats {
     }
 
     public static void registerStats(){
-        NBPVanillaPlus.LOGGER.info("Registering Stats for" + NBPVanillaPlus.MOD_ID);
+        NBPVanillaPlus.LOGGER.info("Registering Stats for " + NBPVanillaPlus.MOD_ID);
     }
 }

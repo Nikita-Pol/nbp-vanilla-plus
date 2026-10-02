@@ -1,6 +1,7 @@
 package net.nikibropol.nbpvanillaplus.datagen;
 
 import com.mojang.math.Quadrant;
+import com.mojang.math.Transformation;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerator;
@@ -9,14 +10,22 @@ import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.renderer.block.dispatch.Variant;
+import net.minecraft.client.renderer.blockentity.ShulkerBoxRenderer;
+import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.special.ShulkerBoxSpecialRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.random.WeightedList;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.nikibropol.nbpvanillaplus.NBPVanillaPlus;
 import net.nikibropol.nbpvanillaplus.block.ModBlocks;
 import net.nikibropol.nbpvanillaplus.block.custom.DreamEchoStatueBlock;
 import net.nikibropol.nbpvanillaplus.block.custom.DreamPetalsBlock;
+import net.nikibropol.nbpvanillaplus.block.custom.DreamPortalBlock;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Optional;
@@ -129,5 +138,94 @@ public class ModBlockModelGenerators extends BlockModelGenerators{
             case WEST -> Quadrant.R270;
             default -> Quadrant.R0;
         };
+    }
+
+    public static void createReinforcedShulkerBox(BlockModelGenerators blockModelGenerators, Block block, @Nullable DyeColor color) {
+        blockModelGenerators.createParticleOnlyBlock(block);
+        Item item = block.asItem();
+        Identifier baseModel = ModelTemplates.SHULKER_BOX_INVENTORY.create(item, TextureMapping.particle(block), blockModelGenerators.modelOutput);
+        Transformation transformation = ShulkerBoxRenderer.modelTransform(Direction.UP);
+        ItemModel.Unbaked itemModel = color != null
+                ? ItemModelUtils.specialModel(baseModel, transformation,
+                new ShulkerBoxSpecialRenderer.Unbaked(
+                        Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "reinforced_shulker_" + color.getSerializedName()),
+                        0.0F))
+                : ItemModelUtils.specialModel(baseModel, transformation,
+                new ShulkerBoxSpecialRenderer.Unbaked(
+                        Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "reinforced_shulker"),
+                        0.0F));
+
+        blockModelGenerators.itemModelOutput.accept(item, itemModel);
+    }
+    static void createSignModels(BlockModelGenerators blockModelGenerators, Block sign, Block wallSign, Block particle) {
+        TextureMapping mapping = new TextureMapping()
+                .put(TextureSlot.ALL, TextureMapping.getBlockTexture(sign))
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(particle));
+
+        MultiVariant r0 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_0.create(ModelLocationUtils
+                .getModelLocation(sign, "_rot_0"), mapping, blockModelGenerators.modelOutput));
+        MultiVariant r1 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_1.create(ModelLocationUtils
+                .getModelLocation(sign, "_rot_1"), mapping, blockModelGenerators.modelOutput));
+        MultiVariant r2 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_2.create(ModelLocationUtils
+                .getModelLocation(sign, "_rot_2"), mapping, blockModelGenerators.modelOutput));
+        MultiVariant r3 = BlockModelGenerators.plainVariant(ModelTemplates.SIGN_ROT_3.create(ModelLocationUtils
+                .getModelLocation(sign, "_rot_3"), mapping, blockModelGenerators.modelOutput));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSign(sign, r0, r1, r2, r3));
+
+        MultiVariant wall = BlockModelGenerators.plainVariant(ModelTemplates.WALL_SIGN
+                .create(wallSign, mapping, blockModelGenerators.modelOutput));
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(wallSign, wall)
+                .with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING_ALT));
+    }
+
+    static void createHangingSignModels(BlockModelGenerators blockModelGenerators, Block hanging, Block wallHanging, Block particle) {
+        TextureMapping mapping = new TextureMapping()
+                .put(TextureSlot.ALL, TextureMapping.getBlockTexture(hanging))
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(particle));
+
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createHangingSign(hanging,
+                BlockModelGenerators.plainVariant(ModelTemplates.HANGING_SIGN_ROT_0.create(ModelLocationUtils
+                        .getModelLocation(hanging, "_rot_0"), mapping, blockModelGenerators.modelOutput)),
+                BlockModelGenerators.plainVariant(ModelTemplates.HANGING_SIGN_ROT_1.create(ModelLocationUtils
+                        .getModelLocation(hanging, "_rot_1"), mapping, blockModelGenerators.modelOutput)),
+                BlockModelGenerators.plainVariant(ModelTemplates.HANGING_SIGN_ROT_2.create(ModelLocationUtils
+                        .getModelLocation(hanging, "_rot_2"), mapping, blockModelGenerators.modelOutput)),
+                BlockModelGenerators.plainVariant(ModelTemplates.HANGING_SIGN_ROT_3.create(ModelLocationUtils
+                        .getModelLocation(hanging, "_rot_3"), mapping, blockModelGenerators.modelOutput)),
+                BlockModelGenerators.plainVariant(ModelTemplates.ATTACHED_HANGING_SIGN_ROT_0.create(ModelLocationUtils
+                        .getModelLocation(hanging, "_attached_rot_0"), mapping, blockModelGenerators.modelOutput)),
+                BlockModelGenerators.plainVariant(ModelTemplates.ATTACHED_HANGING_SIGN_ROT_1.create(ModelLocationUtils
+                        .getModelLocation(hanging, "_attached_rot_1"), mapping, blockModelGenerators.modelOutput)),
+                BlockModelGenerators.plainVariant(ModelTemplates.ATTACHED_HANGING_SIGN_ROT_2.create(ModelLocationUtils
+                        .getModelLocation(hanging, "_attached_rot_2"), mapping, blockModelGenerators.modelOutput)),
+                BlockModelGenerators.plainVariant(ModelTemplates.ATTACHED_HANGING_SIGN_ROT_3.create(ModelLocationUtils
+                        .getModelLocation(hanging, "_attached_rot_3"), mapping, blockModelGenerators.modelOutput))));
+
+        MultiVariant wall = BlockModelGenerators.plainVariant(ModelTemplates.WALL_HANGING_SIGN
+                .create(wallHanging, mapping, blockModelGenerators.modelOutput));
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(wallHanging, wall)
+                .with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING_ALT));
+    }
+
+    private static final TextureSlot PORTAL_SLOT = TextureSlot.create("portal");
+
+    private static final ModelTemplate PORTAL_EW = new ModelTemplate(
+            Optional.of(Identifier.withDefaultNamespace("block/nether_portal_ew")),
+            Optional.of("_ew"), PORTAL_SLOT);
+    private static final ModelTemplate PORTAL_NS = new ModelTemplate(
+            Optional.of(Identifier.withDefaultNamespace("block/nether_portal_ns")),
+            Optional.of("_ns"), PORTAL_SLOT);
+
+    static void generateDreamPortal(BlockModelGenerators blockModelGenerators) {
+        TextureMapping textureMapping = new TextureMapping()
+                .put(PORTAL_SLOT, TextureMapping.getBlockTexture(ModBlocks.DREAM_PORTAL));
+
+        Identifier ew = PORTAL_EW.create(ModBlocks.DREAM_PORTAL, textureMapping, blockModelGenerators.modelOutput);
+        Identifier ns = PORTAL_NS.create(ModBlocks.DREAM_PORTAL, textureMapping, blockModelGenerators.modelOutput);
+
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.DREAM_PORTAL)
+                .with(PropertyDispatch.initial(DreamPortalBlock.AXIS)
+                        .select(Direction.Axis.X, BlockModelGenerators.plainVariant(ns))
+                        .select(Direction.Axis.Z, BlockModelGenerators.plainVariant(ew))));
     }
 }

@@ -1,6 +1,5 @@
 package net.nikibropol.nbpvanillaplus.datagen;
 
-import com.mojang.math.Quadrant;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -13,6 +12,7 @@ import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.properties.select.ComponentContents;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.random.WeightedList;
+import net.minecraft.world.item.DyeColor;
 import net.nikibropol.nbpvanillaplus.block.ModBlocks;
 import net.nikibropol.nbpvanillaplus.block.custom.*;
 import net.nikibropol.nbpvanillaplus.data.ModDataComponents;
@@ -27,11 +27,98 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
+
+
+        blockModelGenerators.woodProvider(ModBlocks.DREAM_GREEN_LOG)
+                .log(ModBlocks.DREAM_GREEN_LOG)
+                .wood(ModBlocks.DREAM_GREEN_WOOD);
+        blockModelGenerators.woodProvider(ModBlocks.STRIPPED_DREAM_GREEN_LOG)
+                .log(ModBlocks.STRIPPED_DREAM_GREEN_LOG)
+                .wood(ModBlocks.STRIPPED_DREAM_GREEN_WOOD);
+        blockModelGenerators.family(ModBlocks.DREAM_GREEN_PLANKS)
+                .stairs(ModBlocks.DREAM_GREEN_WOOD_STAIRS)
+                .slab(ModBlocks.DREAM_GREEN_WOOD_SLAB)
+                .button(ModBlocks.DREAM_GREEN_WOOD_BUTTON)
+                .pressurePlate(ModBlocks.DREAM_GREEN_WOOD_PRESSURE_PLATE)
+                .fence(ModBlocks.DREAM_GREEN_WOOD_FENCE)
+                .fenceGate(ModBlocks.DREAM_GREEN_WOOD_FENCE_GATE);
+        blockModelGenerators.createDoor(ModBlocks.DREAM_GREEN_WOOD_DOOR);
+        blockModelGenerators.createOrientableTrapdoor(ModBlocks.DREAM_GREEN_WOOD_TRAPDOOR);
+        ModBlockModelGenerators.createSignModels(blockModelGenerators, ModBlocks.DREAM_GREEN_WOOD_SIGN, ModBlocks.DREAM_GREEN_WOOD_WALL_SIGN, ModBlocks.DREAM_GREEN_PLANKS);
+        ModBlockModelGenerators.createHangingSignModels(blockModelGenerators, ModBlocks.DREAM_GREEN_WOOD_HANGING_SIGN, ModBlocks.DREAM_GREEN_WOOD_WALL_HANGING_SIGN, ModBlocks.DREAM_GREEN_PLANKS);
+        blockModelGenerators.createTrivialBlock(ModBlocks.DREAM_GREEN_LEAVES, TexturedModel.LEAVES);
+        blockModelGenerators.createPlantWithDefaultItem(ModBlocks.DREAM_GREEN_SAPLING, ModBlocks.POTTED_DREAM_GREEN_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        blockModelGenerators.woodProvider(ModBlocks.DREAM_PURPLE_LOG)
+                .log(ModBlocks.DREAM_PURPLE_LOG)
+                .wood(ModBlocks.DREAM_PURPLE_WOOD);
+        blockModelGenerators.woodProvider(ModBlocks.STRIPPED_DREAM_PURPLE_LOG)
+                .log(ModBlocks.STRIPPED_DREAM_PURPLE_LOG)
+                .wood(ModBlocks.STRIPPED_DREAM_PURPLE_WOOD);
+        blockModelGenerators.family(ModBlocks.DREAM_PURPLE_PLANKS)
+                .stairs(ModBlocks.DREAM_PURPLE_WOOD_STAIRS)
+                .slab(ModBlocks.DREAM_PURPLE_WOOD_SLAB)
+                .button(ModBlocks.DREAM_PURPLE_WOOD_BUTTON)
+                .pressurePlate(ModBlocks.DREAM_PURPLE_WOOD_PRESSURE_PLATE)
+                .fence(ModBlocks.DREAM_PURPLE_WOOD_FENCE)
+                .fenceGate(ModBlocks.DREAM_PURPLE_WOOD_FENCE_GATE);
+        blockModelGenerators.createDoor(ModBlocks.DREAM_PURPLE_WOOD_DOOR);
+        blockModelGenerators.createOrientableTrapdoor(ModBlocks.DREAM_PURPLE_WOOD_TRAPDOOR);
+        ModBlockModelGenerators.createSignModels(blockModelGenerators, ModBlocks.DREAM_PURPLE_WOOD_SIGN, ModBlocks.DREAM_PURPLE_WOOD_WALL_SIGN, ModBlocks.DREAM_PURPLE_PLANKS);
+        ModBlockModelGenerators.createHangingSignModels(blockModelGenerators, ModBlocks.DREAM_PURPLE_WOOD_HANGING_SIGN, ModBlocks.DREAM_PURPLE_WOOD_WALL_HANGING_SIGN, ModBlocks.DREAM_PURPLE_PLANKS);
+        blockModelGenerators.createTrivialBlock(ModBlocks.DREAM_PURPLE_LEAVES, TexturedModel.LEAVES);
+        blockModelGenerators.createPlantWithDefaultItem(ModBlocks.DREAM_PURPLE_SAPLING, ModBlocks.POTTED_DREAM_PURPLE_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        blockModelGenerators.woodProvider(ModBlocks.DREAM_BLUE_LOG)
+                .log(ModBlocks.DREAM_BLUE_LOG)
+                .wood(ModBlocks.DREAM_BLUE_WOOD);
+        blockModelGenerators.woodProvider(ModBlocks.STRIPPED_DREAM_BLUE_LOG)
+                .log(ModBlocks.STRIPPED_DREAM_BLUE_LOG)
+                .wood(ModBlocks.STRIPPED_DREAM_BLUE_WOOD);
+        blockModelGenerators.family(ModBlocks.DREAM_BLUE_PLANKS)
+                .stairs(ModBlocks.DREAM_BLUE_WOOD_STAIRS)
+                .slab(ModBlocks.DREAM_BLUE_WOOD_SLAB)
+                .button(ModBlocks.DREAM_BLUE_WOOD_BUTTON)
+                .pressurePlate(ModBlocks.DREAM_BLUE_WOOD_PRESSURE_PLATE)
+                .fence(ModBlocks.DREAM_BLUE_WOOD_FENCE)
+                .fenceGate(ModBlocks.DREAM_BLUE_WOOD_FENCE_GATE);
+        blockModelGenerators.createDoor(ModBlocks.DREAM_BLUE_WOOD_DOOR);
+        blockModelGenerators.createOrientableTrapdoor(ModBlocks.DREAM_BLUE_WOOD_TRAPDOOR);
+        ModBlockModelGenerators.createSignModels(blockModelGenerators, ModBlocks.DREAM_BLUE_WOOD_SIGN, ModBlocks.DREAM_BLUE_WOOD_WALL_SIGN, ModBlocks.DREAM_BLUE_PLANKS);
+        ModBlockModelGenerators.createHangingSignModels(blockModelGenerators, ModBlocks.DREAM_BLUE_WOOD_HANGING_SIGN, ModBlocks.DREAM_BLUE_WOOD_WALL_HANGING_SIGN, ModBlocks.DREAM_BLUE_PLANKS);
+        blockModelGenerators.createTrivialBlock(ModBlocks.DREAM_BLUE_LEAVES, TexturedModel.LEAVES);
+        blockModelGenerators.createPlantWithDefaultItem(ModBlocks.DREAM_BLUE_SAPLING, ModBlocks.POTTED_DREAM_BLUE_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        blockModelGenerators.woodProvider(ModBlocks.DREAM_LIGHT_BLUE_LOG)
+                .log(ModBlocks.DREAM_LIGHT_BLUE_LOG)
+                .wood(ModBlocks.DREAM_LIGHT_BLUE_WOOD);
+        blockModelGenerators.woodProvider(ModBlocks.STRIPPED_DREAM_LIGHT_BLUE_LOG)
+                .log(ModBlocks.STRIPPED_DREAM_LIGHT_BLUE_LOG)
+                .wood(ModBlocks.STRIPPED_DREAM_LIGHT_BLUE_WOOD);
+        blockModelGenerators.family(ModBlocks.DREAM_LIGHT_BLUE_PLANKS)
+                .stairs(ModBlocks.DREAM_LIGHT_BLUE_WOOD_STAIRS)
+                .slab(ModBlocks.DREAM_LIGHT_BLUE_WOOD_SLAB)
+                .button(ModBlocks.DREAM_LIGHT_BLUE_WOOD_BUTTON)
+                .pressurePlate(ModBlocks.DREAM_LIGHT_BLUE_WOOD_PRESSURE_PLATE)
+                .fence(ModBlocks.DREAM_LIGHT_BLUE_WOOD_FENCE)
+                .fenceGate(ModBlocks.DREAM_LIGHT_BLUE_WOOD_FENCE_GATE);
+        blockModelGenerators.createDoor(ModBlocks.DREAM_LIGHT_BLUE_WOOD_DOOR);
+        blockModelGenerators.createOrientableTrapdoor(ModBlocks.DREAM_LIGHT_BLUE_WOOD_TRAPDOOR);
+        ModBlockModelGenerators.createSignModels(blockModelGenerators, ModBlocks.DREAM_LIGHT_BLUE_WOOD_SIGN, ModBlocks.DREAM_LIGHT_BLUE_WOOD_WALL_SIGN, ModBlocks.DREAM_LIGHT_BLUE_PLANKS);
+        ModBlockModelGenerators.createHangingSignModels(blockModelGenerators, ModBlocks.DREAM_LIGHT_BLUE_WOOD_HANGING_SIGN, ModBlocks.DREAM_LIGHT_BLUE_WOOD_WALL_HANGING_SIGN, ModBlocks.DREAM_LIGHT_BLUE_PLANKS);
+        blockModelGenerators.createTrivialBlock(ModBlocks.DREAM_LIGHT_BLUE_LEAVES, TexturedModel.LEAVES);
+        blockModelGenerators.createPlantWithDefaultItem(ModBlocks.DREAM_LIGHT_BLUE_SAPLING, ModBlocks.POTTED_DREAM_LIGHT_BLUE_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        ModBlockModelGenerators.generateDreamPortal(blockModelGenerators);
+
         blockModelGenerators.createTrivialCube(ModBlocks.ECHO_BLOCK);
         blockModelGenerators.createTrivialCube(ModBlocks.ECHO_MAGMA);
         blockModelGenerators.createTrivialCube(ModBlocks.REINFORCED_OBSIDIAN);
+        blockModelGenerators.createTrivialCube(ModBlocks.DREAMED_OBSIDIAN);
+        blockModelGenerators.createTrivialCube(ModBlocks.DREAMED_POWERED_OBSIDIAN);
 
         blockModelGenerators.createCropBlock(ModBlocks.STRANGE_BEETROOT_CROP, StrangeBeetrootCropBlock.AGE, 0,1,2,3);
+        blockModelGenerators.createCropBlock(ModBlocks.FLOWTAREM_CROP, FlowtaremCropBlock.AGE, 0,1,2,3);
         blockModelGenerators.createCropBlock(ModBlocks.DREAM_FLOWER, DreamFlowerBlock.AGE, 0,1,2,3,4,5,6,7);
         blockModelGenerators.createCrossBlock(ModBlocks.AMETHYST_SWEET_BERRIES_BUSH, BlockModelGenerators.PlantType.NOT_TINTED,
                 AmethystSweetBerriesBushBlock.AGE, 0,1,2,3);
@@ -53,6 +140,11 @@ public class ModModelProvider extends FabricModelProvider {
         ModBlockModelGenerators.generateDreamPetals(blockModelGenerators, ModBlocks.DREAM_PETALS_PURPLE);
 
         ModBlockModelGenerators.generateDreamEchoStatue(blockModelGenerators, ModBlocks.DREAM_ECHO_STATUE);
+
+        for (DyeColor color : DyeColor.values()) {
+            ModBlockModelGenerators.createReinforcedShulkerBox(blockModelGenerators, ModBlocks.REINFORCED_SHULKER_BOXES.get(color), color);
+        }
+        ModBlockModelGenerators.createReinforcedShulkerBox(blockModelGenerators, ModBlocks.REINFORCED_SHULKER_BOX, null);
 
     }
 
@@ -97,6 +189,11 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(ModItems.STRANGE_BEETROOT, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerators.generateFlatItem(ModItems.FLOWTAREM, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.RESIN_FLOWTAREM, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_SUGAR_CANE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_CHORUS_FRUIT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_CARROT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_APPLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_POTATO, ModelTemplates.FLAT_ITEM);
@@ -104,6 +201,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_STRANGE_BEETROOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_SWEET_BERRIES, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_AMETHYST_SWEET_BERRIES, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_GLOW_BERRIES, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_ECHO_BERRIES, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_FLOWTAREM, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_RESIN_FLOWTAREM, ModelTemplates.FLAT_ITEM);
 
 
         itemModelGenerators.generateFlatItem(ModBlocks.DREAM_PETALS_GREEN.asItem(), ModelTemplates.FLAT_ITEM);
@@ -114,6 +215,19 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.declareCustomModelItem(ModItems.EXTENDER);
         itemModelGenerators.declareCustomModelItem(ModItems.EXTENDER_AMETHYST);
         itemModelGenerators.declareCustomModelItem(ModItems.EXTENDER_ECHO);
+
+        itemModelGenerators.generateFlatItem(ModItems.ONLY_ONCE_MORE_MUSIC_DISC, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DUSK_TO_DAWN_MUSIC_DISC, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BROKEN_ETERNITY_MUSIC_DISC, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerators.generateFlatItem(ModItems.DREAM_GREEN_WOOD_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DREAM_GREEN_WOOD_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DREAM_PURPLE_WOOD_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DREAM_PURPLE_WOOD_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DREAM_BLUE_WOOD_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DREAM_BLUE_WOOD_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DREAM_LIGHT_BLUE_WOOD_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DREAM_LIGHT_BLUE_WOOD_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
 
     }
 

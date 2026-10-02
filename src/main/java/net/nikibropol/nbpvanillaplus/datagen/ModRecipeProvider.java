@@ -6,15 +6,21 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.nikibropol.nbpvanillaplus.NBPVanillaPlus;
 import net.nikibropol.nbpvanillaplus.block.ModBlocks;
 import net.nikibropol.nbpvanillaplus.item.ModItems;
+import net.nikibropol.nbpvanillaplus.recipe.ReinforcedShulkerBoxColorRecipe;
+import net.nikibropol.nbpvanillaplus.tags.ModTags;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -124,7 +130,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("echo_shard")
                         .save(output, "echo_shard_craft");
 
-                shaped(RecipeCategory.MISC, ModItems.ECHOBERRY)
+                shaped(RecipeCategory.FOOD, ModItems.ECHOBERRY)
                         .pattern("SSS")
                         .pattern("SBS")
                         .pattern("SSS")
@@ -135,7 +141,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("echoberry")
                         .save(output, "echoberry_sculk_craft");
 
-                shaped(RecipeCategory.MISC, ModItems.ECHOBERRY, 8)
+                shaped(RecipeCategory.FOOD, ModItems.ECHOBERRY, 8)
                         .pattern("BBB")
                         .pattern("BEB")
                         .pattern("BBB")
@@ -146,7 +152,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("echoberry")
                         .save(output, "echoberry_shard_craft");
 
-                shaped(RecipeCategory.MISC, ModItems.AMETHYST_SWEET_BERRIES, 8)
+                shaped(RecipeCategory.FOOD, ModItems.AMETHYST_SWEET_BERRIES, 8)
                         .pattern("BBB")
                         .pattern("BAB")
                         .pattern("BBB")
@@ -157,6 +163,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("amethyst_sweet_berries")
                         .save(output, "amethyst_sweet_berries_shard_craft");
 
+                shaped(RecipeCategory.FOOD, ModItems.RESIN_FLOWTAREM, 8)
+                        .pattern("FFF")
+                        .pattern("FRF")
+                        .pattern("FFF")
+                        .define('R', Items.RESIN_CLUMP)
+                        .define('F', ModItems.FLOWTAREM)
+                        .unlockedBy(getHasName(Items.RESIN_CLUMP), has(Items.RESIN_CLUMP))
+                        .unlockedBy(getHasName(ModItems.FLOWTAREM), has(ModItems.FLOWTAREM))
+                        .group("resin_flowtarem")
+                        .save(output, "resin_flowtarem_craft");
+
+                nineBlockStorageRecipes(RecipeCategory.FOOD, Items.SUGAR_CANE, RecipeCategory.FOOD, ModItems.BUNCH_OF_SUGAR_CANE);
+                nineBlockStorageRecipes(RecipeCategory.FOOD, Items.CHORUS_FRUIT, RecipeCategory.FOOD, ModItems.BUNCH_OF_CHORUS_FRUIT);
                 nineBlockStorageRecipes(RecipeCategory.FOOD, Items.CARROT, RecipeCategory.FOOD, ModItems.BUNCH_OF_CARROT);
                 nineBlockStorageRecipes(RecipeCategory.FOOD, Items.APPLE, RecipeCategory.FOOD, ModItems.BUNCH_OF_APPLE);
                 nineBlockStorageRecipes(RecipeCategory.FOOD, Items.POTATO, RecipeCategory.FOOD, ModItems.BUNCH_OF_POTATO);
@@ -164,6 +183,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.FOOD, ModItems.STRANGE_BEETROOT, RecipeCategory.FOOD, ModItems.BUNCH_OF_STRANGE_BEETROOT);
                 nineBlockStorageRecipes(RecipeCategory.FOOD, Items.SWEET_BERRIES, RecipeCategory.FOOD, ModItems.BUNCH_OF_SWEET_BERRIES);
                 nineBlockStorageRecipes(RecipeCategory.FOOD, ModItems.AMETHYST_SWEET_BERRIES, RecipeCategory.FOOD, ModItems.BUNCH_OF_AMETHYST_SWEET_BERRIES);
+                nineBlockStorageRecipes(RecipeCategory.FOOD, Items.GLOW_BERRIES, RecipeCategory.FOOD, ModItems.BUNCH_OF_GLOW_BERRIES);
+                nineBlockStorageRecipes(RecipeCategory.FOOD, ModItems.ECHOBERRY, RecipeCategory.FOOD, ModItems.BUNCH_OF_ECHO_BERRIES);
+                nineBlockStorageRecipes(RecipeCategory.FOOD, ModItems.FLOWTAREM, RecipeCategory.FOOD, ModItems.BUNCH_OF_FLOWTAREM);
+                nineBlockStorageRecipes(RecipeCategory.FOOD, ModItems.RESIN_FLOWTAREM, RecipeCategory.FOOD, ModItems.BUNCH_OF_RESIN_FLOWTAREM);
 
                 nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ECHO_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ECHO_BLOCK);
 
@@ -216,6 +239,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("dream_seeds")
                         .save(output, "dream_seeds_craft");
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DREAMED_OBSIDIAN)
+                        .pattern("GPB")
+                        .pattern("LRL")
+                        .pattern("BPG")
+                        .define('R', ModBlocks.REINFORCED_OBSIDIAN)
+                        .define('G', ModBlocks.DREAM_PETALS_GREEN)
+                        .define('P', ModBlocks.DREAM_PETALS_PURPLE)
+                        .define('B', ModBlocks.DREAM_PETALS_BLUE)
+                        .define('L', ModBlocks.DREAM_PETALS_LIGHT_BLUE)
+                        .unlockedBy(getHasName(ModBlocks.REINFORCED_OBSIDIAN), has(ModBlocks.REINFORCED_OBSIDIAN))
+                        .group("dreamed_obsidian")
+                        .save(output, "dreamed_obsidian_craft");
+
                 Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_INGOT, RecipeCategory.MISC, Items.HEAVY_CORE, ModItems.ECHO_INGOT, output);
 
                 Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_SWORD, RecipeCategory.COMBAT, ModItems.ECHO_INGOT, ModItems.ECHO_SWORD, output);
@@ -235,6 +271,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
                 Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModItems.EXTENDER, RecipeCategory.TOOLS, ModBlocks.REINFORCED_OBSIDIAN, ModItems.EXTENDER_AMETHYST, output);
                 Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, ModItems.EXTENDER_AMETHYST, RecipeCategory.TOOLS, ModItems.ECHO_INGOT, ModItems.EXTENDER_ECHO, output);
+
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.black(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"black", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.blue(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"blue", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.brown(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"brown", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.cyan(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"cyan", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.gray(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"gray", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.green(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"green", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.lightBlue(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"light_blue", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.lightGray(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"light_gray", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.lime(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"lime", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.magenta(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"magenta", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.orange(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"orange", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.pink(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"pink", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.purple(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"purple", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.red(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"red", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.white(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"white", output);
+                Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.yellow(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"yellow", output);
 
                 shaped(RecipeCategory.MISC, Items.LIGHT, 16)
                         .pattern("IGR")
@@ -329,6 +382,171 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("light_blue_dye")
                         .save(output, "light_blue_dye_from_light_blue_dream_petals");
 
+                for (DyeColor color : DyeColor.values()) {
+                    Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, vanillaShulkerBox(color), RecipeCategory.MISC,
+                            ModBlocks.REINFORCED_OBSIDIAN, ModBlocks.REINFORCED_SHULKER_BOXES.get(color).asItem(), output);}
+
+                Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.SHULKER_BOX, RecipeCategory.MISC,
+                        ModBlocks.REINFORCED_OBSIDIAN, ModBlocks.REINFORCED_SHULKER_BOX, output);
+
+                SpecialRecipeBuilder.special(ReinforcedShulkerBoxColorRecipe::new)
+                        .save(output, String.valueOf(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "reinforced_shulker_box_color")));
+
+                woodFromLogs(ModBlocks.DREAM_GREEN_WOOD, ModBlocks.DREAM_GREEN_LOG);
+                woodFromLogs(ModBlocks.STRIPPED_DREAM_GREEN_WOOD, ModBlocks.STRIPPED_DREAM_GREEN_LOG);
+                planksFromLogs(ModBlocks.DREAM_GREEN_PLANKS, ModTags.Items.DREAM_GREEN_LOGS, 4);
+
+                stairBuilder(ModBlocks.DREAM_GREEN_WOOD_STAIRS, Ingredient.of(ModBlocks.DREAM_GREEN_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_GREEN_PLANKS), has(ModBlocks.DREAM_GREEN_PLANKS))
+                        .group("dream_green_wood_stairs").save(output);
+
+                slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DREAM_GREEN_WOOD_SLAB, ModBlocks.DREAM_GREEN_PLANKS);
+
+                buttonBuilder(ModBlocks.DREAM_GREEN_WOOD_BUTTON, Ingredient.of(ModBlocks.DREAM_GREEN_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_GREEN_PLANKS), has(ModBlocks.DREAM_GREEN_PLANKS))
+                        .group("dream_green_wood_button").save(output);
+                pressurePlate(ModBlocks.DREAM_GREEN_WOOD_PRESSURE_PLATE, ModBlocks.DREAM_GREEN_PLANKS);
+
+                fenceBuilder(ModBlocks.DREAM_GREEN_WOOD_FENCE, Ingredient.of(ModBlocks.DREAM_GREEN_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_GREEN_PLANKS), has(ModBlocks.DREAM_GREEN_PLANKS))
+                        .group("dream_green_wood_fence").save(output);
+
+                fenceBuilder(ModBlocks.DREAM_GREEN_WOOD_FENCE_GATE, Ingredient.of(ModBlocks.DREAM_GREEN_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_GREEN_PLANKS), has(ModBlocks.DREAM_GREEN_PLANKS))
+                        .group("dream_green_wood_fence_gate").save(output);
+
+                doorBuilder(ModBlocks.DREAM_GREEN_WOOD_DOOR, Ingredient.of(ModBlocks.DREAM_GREEN_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_GREEN_PLANKS), has(ModBlocks.DREAM_GREEN_PLANKS))
+                        .group("dream_green_wood_door").save(output);
+
+                trapdoorBuilder(ModBlocks.DREAM_GREEN_WOOD_TRAPDOOR, Ingredient.of(ModBlocks.DREAM_GREEN_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_GREEN_PLANKS), has(ModBlocks.DREAM_GREEN_PLANKS))
+                        .group("dream_green_wood_trapdoor").save(output);
+
+                signBuilder(ModBlocks.DREAM_GREEN_WOOD_SIGN, Ingredient.of(ModBlocks.DREAM_GREEN_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_GREEN_PLANKS), has(ModBlocks.DREAM_GREEN_PLANKS))
+                        .group("dream_green_wood_sign").save(output);
+
+                hangingSignBuilder(ModBlocks.DREAM_GREEN_WOOD_HANGING_SIGN, Ingredient.of(ModBlocks.DREAM_GREEN_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_GREEN_PLANKS), has(ModBlocks.DREAM_GREEN_PLANKS))
+                        .group("dream_green_wood_hanging_sign").save(output);
+
+                woodFromLogs(ModBlocks.DREAM_PURPLE_WOOD, ModBlocks.DREAM_PURPLE_LOG);
+                woodFromLogs(ModBlocks.STRIPPED_DREAM_PURPLE_WOOD, ModBlocks.STRIPPED_DREAM_PURPLE_LOG);
+                planksFromLogs(ModBlocks.DREAM_PURPLE_PLANKS, ModTags.Items.DREAM_PURPLE_LOGS, 4);
+
+                stairBuilder(ModBlocks.DREAM_PURPLE_WOOD_STAIRS, Ingredient.of(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_PURPLE_PLANKS), has(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .group("dream_purple_wood_stairs").save(output);
+
+                slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DREAM_PURPLE_WOOD_SLAB, ModBlocks.DREAM_PURPLE_PLANKS);
+
+                buttonBuilder(ModBlocks.DREAM_PURPLE_WOOD_BUTTON, Ingredient.of(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_PURPLE_PLANKS), has(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .group("dream_purple_wood_button").save(output);
+                pressurePlate(ModBlocks.DREAM_PURPLE_WOOD_PRESSURE_PLATE, ModBlocks.DREAM_PURPLE_PLANKS);
+
+                fenceBuilder(ModBlocks.DREAM_PURPLE_WOOD_FENCE, Ingredient.of(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_PURPLE_PLANKS), has(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .group("dream_purple_wood_fence").save(output);
+
+                fenceBuilder(ModBlocks.DREAM_PURPLE_WOOD_FENCE_GATE, Ingredient.of(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_PURPLE_PLANKS), has(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .group("dream_purple_wood_fence_gate").save(output);
+
+                doorBuilder(ModBlocks.DREAM_PURPLE_WOOD_DOOR, Ingredient.of(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_PURPLE_PLANKS), has(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .group("dream_purple_wood_door").save(output);
+
+                trapdoorBuilder(ModBlocks.DREAM_PURPLE_WOOD_TRAPDOOR, Ingredient.of(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_PURPLE_PLANKS), has(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .group("dream_purple_wood_trapdoor").save(output);
+
+                signBuilder(ModBlocks.DREAM_PURPLE_WOOD_SIGN, Ingredient.of(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_PURPLE_PLANKS), has(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .group("dream_purple_wood_sign").save(output);
+
+                hangingSignBuilder(ModBlocks.DREAM_PURPLE_WOOD_HANGING_SIGN, Ingredient.of(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_PURPLE_PLANKS), has(ModBlocks.DREAM_PURPLE_PLANKS))
+                        .group("dream_purple_wood_hanging_sign").save(output);
+
+                woodFromLogs(ModBlocks.DREAM_BLUE_WOOD, ModBlocks.DREAM_BLUE_LOG);
+                woodFromLogs(ModBlocks.STRIPPED_DREAM_BLUE_WOOD, ModBlocks.STRIPPED_DREAM_BLUE_LOG);
+                planksFromLogs(ModBlocks.DREAM_BLUE_PLANKS, ModTags.Items.DREAM_BLUE_LOGS, 4);
+
+                stairBuilder(ModBlocks.DREAM_BLUE_WOOD_STAIRS, Ingredient.of(ModBlocks.DREAM_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_BLUE_PLANKS), has(ModBlocks.DREAM_BLUE_PLANKS))
+                        .group("dream_blue_wood_stairs").save(output);
+
+                slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DREAM_BLUE_WOOD_SLAB, ModBlocks.DREAM_BLUE_PLANKS);
+
+                buttonBuilder(ModBlocks.DREAM_BLUE_WOOD_BUTTON, Ingredient.of(ModBlocks.DREAM_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_BLUE_PLANKS), has(ModBlocks.DREAM_BLUE_PLANKS))
+                        .group("dream_blue_wood_button").save(output);
+                pressurePlate(ModBlocks.DREAM_BLUE_WOOD_PRESSURE_PLATE, ModBlocks.DREAM_BLUE_PLANKS);
+
+                fenceBuilder(ModBlocks.DREAM_BLUE_WOOD_FENCE, Ingredient.of(ModBlocks.DREAM_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_BLUE_PLANKS), has(ModBlocks.DREAM_BLUE_PLANKS))
+                        .group("dream_blue_wood_fence").save(output);
+
+                fenceBuilder(ModBlocks.DREAM_BLUE_WOOD_FENCE_GATE, Ingredient.of(ModBlocks.DREAM_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_BLUE_PLANKS), has(ModBlocks.DREAM_BLUE_PLANKS))
+                        .group("dream_blue_wood_fence_gate").save(output);
+
+                doorBuilder(ModBlocks.DREAM_BLUE_WOOD_DOOR, Ingredient.of(ModBlocks.DREAM_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_BLUE_PLANKS), has(ModBlocks.DREAM_BLUE_PLANKS))
+                        .group("dream_blue_wood_door").save(output);
+
+                trapdoorBuilder(ModBlocks.DREAM_BLUE_WOOD_TRAPDOOR, Ingredient.of(ModBlocks.DREAM_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_BLUE_PLANKS), has(ModBlocks.DREAM_BLUE_PLANKS))
+                        .group("dream_blue_wood_trapdoor").save(output);
+
+                signBuilder(ModBlocks.DREAM_BLUE_WOOD_SIGN, Ingredient.of(ModBlocks.DREAM_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_BLUE_PLANKS), has(ModBlocks.DREAM_BLUE_PLANKS))
+                        .group("dream_blue_wood_sign").save(output);
+
+                hangingSignBuilder(ModBlocks.DREAM_BLUE_WOOD_HANGING_SIGN, Ingredient.of(ModBlocks.DREAM_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_BLUE_PLANKS), has(ModBlocks.DREAM_BLUE_PLANKS))
+                        .group("dream_blue_wood_hanging_sign").save(output);
+
+                woodFromLogs(ModBlocks.DREAM_LIGHT_BLUE_WOOD, ModBlocks.DREAM_LIGHT_BLUE_LOG);
+                woodFromLogs(ModBlocks.STRIPPED_DREAM_LIGHT_BLUE_WOOD, ModBlocks.STRIPPED_DREAM_LIGHT_BLUE_LOG);
+                planksFromLogs(ModBlocks.DREAM_LIGHT_BLUE_PLANKS, ModTags.Items.DREAM_LIGHT_BLUE_LOGS, 4);
+
+                stairBuilder(ModBlocks.DREAM_LIGHT_BLUE_WOOD_STAIRS, Ingredient.of(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_LIGHT_BLUE_PLANKS), has(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .group("dream_light_blue_wood_stairs").save(output);
+
+                slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DREAM_LIGHT_BLUE_WOOD_SLAB, ModBlocks.DREAM_LIGHT_BLUE_PLANKS);
+
+                buttonBuilder(ModBlocks.DREAM_LIGHT_BLUE_WOOD_BUTTON, Ingredient.of(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_LIGHT_BLUE_PLANKS), has(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .group("dream_light_blue_wood_button").save(output);
+                pressurePlate(ModBlocks.DREAM_LIGHT_BLUE_WOOD_PRESSURE_PLATE, ModBlocks.DREAM_LIGHT_BLUE_PLANKS);
+
+                fenceBuilder(ModBlocks.DREAM_LIGHT_BLUE_WOOD_FENCE, Ingredient.of(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_LIGHT_BLUE_PLANKS), has(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .group("dream_light_blue_wood_fence").save(output);
+
+                fenceBuilder(ModBlocks.DREAM_LIGHT_BLUE_WOOD_FENCE_GATE, Ingredient.of(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_LIGHT_BLUE_PLANKS), has(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .group("dream_light_blue_wood_fence_gate").save(output);
+
+                doorBuilder(ModBlocks.DREAM_LIGHT_BLUE_WOOD_DOOR, Ingredient.of(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_LIGHT_BLUE_PLANKS), has(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .group("dream_light_blue_wood_door").save(output);
+
+                trapdoorBuilder(ModBlocks.DREAM_LIGHT_BLUE_WOOD_TRAPDOOR, Ingredient.of(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_LIGHT_BLUE_PLANKS), has(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .group("dream_light_blue_wood_trapdoor").save(output);
+
+                signBuilder(ModBlocks.DREAM_LIGHT_BLUE_WOOD_SIGN, Ingredient.of(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_LIGHT_BLUE_PLANKS), has(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .group("dream_light_blue_wood_sign").save(output);
+
+                hangingSignBuilder(ModBlocks.DREAM_LIGHT_BLUE_WOOD_HANGING_SIGN, Ingredient.of(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_LIGHT_BLUE_PLANKS), has(ModBlocks.DREAM_LIGHT_BLUE_PLANKS))
+                        .group("dream_light_blue_wood_hanging_sign").save(output);
             }
         };
     }
@@ -343,6 +561,40 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .unlocks("has_ingredient", provider.has(ingredient))
                 .save(output, String.valueOf(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID,
                         BuiltInRegistries.ITEM.getKey(resultItem.asItem()).getPath() + "_smithing")));
+    }
+    private void Smithing(RecipeProvider provider, ItemLike TemplateItem, ItemLike baseItem, RecipeCategory category, ItemLike ingredient, ItemLike resultItem, String from, RecipeOutput output) {
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(TemplateItem),
+                        Ingredient.of(baseItem),
+                        Ingredient.of(ingredient),
+                        category,
+                        resultItem.asItem()
+                )
+                .unlocks("has_ingredient", provider.has(ingredient))
+                .save(output, String.valueOf(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID,
+                        BuiltInRegistries.ITEM.getKey(resultItem.asItem()).getPath() + "_" + from + "_smithing")));
+    }
+
+    private static Block vanillaShulkerBox(@Nullable DyeColor color) {
+        if (color == null) return Blocks.SHULKER_BOX;
+        return switch (color) {
+            case WHITE -> Blocks.DYED_SHULKER_BOX.white();
+            case ORANGE -> Blocks.DYED_SHULKER_BOX.orange();
+            case MAGENTA -> Blocks.DYED_SHULKER_BOX.magenta();
+            case LIGHT_BLUE -> Blocks.DYED_SHULKER_BOX.lightBlue();
+            case YELLOW -> Blocks.DYED_SHULKER_BOX.yellow();
+            case LIME -> Blocks.DYED_SHULKER_BOX.lime();
+            case PINK -> Blocks.DYED_SHULKER_BOX.pink();
+            case GRAY -> Blocks.DYED_SHULKER_BOX.gray();
+            case LIGHT_GRAY -> Blocks.DYED_SHULKER_BOX.lightGray();
+            case CYAN -> Blocks.DYED_SHULKER_BOX.cyan();
+            case PURPLE -> Blocks.DYED_SHULKER_BOX.purple();
+            case BLUE -> Blocks.DYED_SHULKER_BOX.blue();
+            case BROWN -> Blocks.DYED_SHULKER_BOX.brown();
+            case GREEN -> Blocks.DYED_SHULKER_BOX.green();
+            case RED -> Blocks.DYED_SHULKER_BOX.red();
+            case BLACK -> Blocks.DYED_SHULKER_BOX.black();
+        };
     }
 
     @Override

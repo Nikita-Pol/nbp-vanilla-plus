@@ -1,25 +1,21 @@
 package net.nikibropol.nbpvanillaplus.item.custom;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
+import net.nikibropol.nbpvanillaplus.sound.ModSounds;
 import net.nikibropol.nbpvanillaplus.stat.ModStats;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 public class CobblerItem extends Item {
 
@@ -47,7 +43,9 @@ public class CobblerItem extends Item {
 
         if (COBBLER_MAP.containsKey(clickedBlock) && !level.isClientSide()) {
             level.setBlockAndUpdate(context.getClickedPos(), COBBLER_MAP.get(clickedBlock).defaultBlockState());
-            Optional<BlockState> newBlock = this.evaluateNewBlockState(level, pos, player, level.getBlockState(pos));
+            level.playSound(null, context.getClickedPos(), ModSounds.COBBLER_USE, SoundSource.BLOCKS, 1.0f,
+                    0.8f + level.getRandom().nextFloat() * 0.4f);
+
             context.getItemInHand().hurtAndBreak(1, context.getPlayer(), context.getHand());
             context.getPlayer().awardStat(ModStats.COBBLER_USED_STAT, 1);
         }
