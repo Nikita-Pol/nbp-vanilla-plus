@@ -8,16 +8,15 @@ import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.Variant;
-import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.client.renderer.item.properties.select.ComponentContents;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.item.DyeColor;
 import net.nikibropol.nbpvanillaplus.block.ModBlocks;
 import net.nikibropol.nbpvanillaplus.block.custom.*;
-import net.nikibropol.nbpvanillaplus.data.ModDataComponents;
 import net.nikibropol.nbpvanillaplus.item.ModArmorMaterials;
 import net.nikibropol.nbpvanillaplus.item.ModItems;
+
+import static net.nikibropol.nbpvanillaplus.datagen.ModItemModelGenerators.*;
 
 public class ModModelProvider extends FabricModelProvider {
 
@@ -111,11 +110,28 @@ public class ModModelProvider extends FabricModelProvider {
 
         ModBlockModelGenerators.generateDreamPortal(blockModelGenerators);
 
+        ModBlockModelGenerators.generateClump(blockModelGenerators, ModBlocks.RESIN_ECHO_CLUMP, ModItems.RESIN_ECHO_CLUMP, ModBlockModelGenerators.RESIN_CLUMP_TEMPLATE);
         blockModelGenerators.createTrivialCube(ModBlocks.ECHO_BLOCK);
         blockModelGenerators.createTrivialCube(ModBlocks.ECHO_MAGMA);
+        blockModelGenerators.createTrivialCube(ModBlocks.RESIN_ECHO_BLOCK);
+
+        blockModelGenerators.family(ModBlocks.RESIN_ECHO_BRICKS)
+                .stairs(ModBlocks.RESIN_ECHO_BRICKS_STAIRS)
+                .slab(ModBlocks.RESIN_ECHO_BRICKS_SLAB)
+                .wall(ModBlocks.RESIN_ECHO_BRICKS_WALL);
+        blockModelGenerators.createTrivialCube(ModBlocks.CHISELED_RESIN_ECHO_BRICKS);
+        blockModelGenerators.family(ModBlocks.RESIN_ENDER_BRICKS)
+                .stairs(ModBlocks.RESIN_ENDER_BRICKS_STAIRS)
+                .slab(ModBlocks.RESIN_ENDER_BRICKS_SLAB)
+                .wall(ModBlocks.RESIN_ENDER_BRICKS_WALL);
+        blockModelGenerators.createTrivialCube(ModBlocks.CHISELED_RESIN_ENDER_BRICKS);
+
+        blockModelGenerators.createCreakingHeart(ModBlocks.ECHO_CREAKING_HEART);
+
         blockModelGenerators.createTrivialCube(ModBlocks.REINFORCED_OBSIDIAN);
         blockModelGenerators.createTrivialCube(ModBlocks.DREAMED_OBSIDIAN);
         blockModelGenerators.createTrivialCube(ModBlocks.DREAMED_POWERED_OBSIDIAN);
+        blockModelGenerators.createBrushableBlock(ModBlocks.SUSPICIOUS_DIRT);
 
         blockModelGenerators.createCropBlock(ModBlocks.STRANGE_BEETROOT_CROP, StrangeBeetrootCropBlock.AGE, 0,1,2,3);
         blockModelGenerators.createCropBlock(ModBlocks.FLOWTAREM_CROP, FlowtaremCropBlock.AGE, 0,1,2,3);
@@ -152,7 +168,8 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
         itemModelGenerators.generateFlatItem(ModItems.ECHO_FRAGMENT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.FUSED_ECHO_SHARD, ModelTemplates.FLAT_ITEM);
-        createRecoveryShardModels(itemModelGenerators); // Generating Recovery Shard Models
+        generateRecoveryShardModels(itemModelGenerators); // Generating Recovery Shard Models
+        generateLightScannerModels(itemModelGenerators);
         itemModelGenerators.generateFlatItem(ModItems.ECHO_SCRAP, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.ECHO_INGOT, ModelTemplates.FLAT_ITEM);
 
@@ -186,11 +203,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.ECHO_NAUTILUS_ARMOR, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.ECHOBERRY, ModelTemplates.FLAT_ITEM);
-
         itemModelGenerators.generateFlatItem(ModItems.STRANGE_BEETROOT, ModelTemplates.FLAT_ITEM);
-
         itemModelGenerators.generateFlatItem(ModItems.FLOWTAREM, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.RESIN_FLOWTAREM, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DREAM_BREAD, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_SUGAR_CANE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BUNCH_OF_CHORUS_FRUIT, ModelTemplates.FLAT_ITEM);
@@ -216,9 +232,17 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.declareCustomModelItem(ModItems.EXTENDER_AMETHYST);
         itemModelGenerators.declareCustomModelItem(ModItems.EXTENDER_ECHO);
 
+        itemModelGenerators.generateFlatItem(ModItems.DISC_FRAGMENT_GREEN_DREAMS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DISC_FRAGMENT_PURPLE_DREAMS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DISC_FRAGMENT_BLUE_DREAMS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DISC_FRAGMENT_LIGHT_BLUE_DREAMS, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.ONLY_ONCE_MORE_MUSIC_DISC, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DUSK_TO_DAWN_MUSIC_DISC, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BROKEN_ETERNITY_MUSIC_DISC, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SLEEPING_FOREST_MUSIC_DISC, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DREAMS_MUSIC_DISC, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.INTO_SILENCE_MUSIC_DISC, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.JUST_A_MEMORY_MUSIC_DISC, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.DREAM_GREEN_WOOD_SIGN, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DREAM_GREEN_WOOD_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
@@ -229,21 +253,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.DREAM_LIGHT_BLUE_WOOD_SIGN, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DREAM_LIGHT_BLUE_WOOD_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerators.generateFlatItem(ModItems.ECHO_CREAKING_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+
+
     }
 
-    public static void createRecoveryShardModels(ItemModelGenerators itemModelGenerators) {
-        ItemModel.Unbaked right = ItemModelUtils.plainModel(
-                itemModelGenerators.createFlatItemModel(ModItems.RECOVERY_SHARD, "_right", ModelTemplates.FLAT_ITEM)
-        );
 
-        ItemModel.Unbaked wrong = ItemModelUtils.plainModel(
-                itemModelGenerators.createFlatItemModel(ModItems.RECOVERY_SHARD, "_wrong", ModelTemplates.FLAT_ITEM)
-        );
-
-        itemModelGenerators.itemModelOutput.accept(ModItems.RECOVERY_SHARD,ItemModelUtils.select(
-                        new ComponentContents<>(ModDataComponents.IS_ACTUAL), wrong,
-                        ItemModelUtils.when(false, wrong), ItemModelUtils.when(true, right)
-                )
-        );
-    }
 }

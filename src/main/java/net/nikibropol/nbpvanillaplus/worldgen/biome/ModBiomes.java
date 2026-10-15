@@ -1,5 +1,10 @@
 package net.nikibropol.nbpvanillaplus.worldgen.biome;
 
+import net.minecraft.core.HolderGetter;
+import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributeMap;
+import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.nikibropol.nbpvanillaplus.NBPVanillaPlus;
 import net.minecraft.core.registries.Registries;
@@ -28,6 +33,7 @@ public class ModBiomes {
         context.register(DREAM_BLUE,       Dream(context, 0x4F6FC8, 0x3F5CB5, 0x34509F, 0x1D2A50, 0x0E1533, ModPlacedFeatures.DREAM_BLUE_WOOD_PLACED_KEY));
         context.register(DREAM_LIGHT_BLUE, Dream(context, 0x6FBBDD, 0x5AA8CC, 0x4F9CC8, 0x28485F, 0x101F3A, ModPlacedFeatures.DREAM_LIGHT_BLUE_WOOD_PLACED_KEY));
         context.register(DREAM_PURPLE,     Dream(context, 0x9673D0, 0x8262BC, 0x7452B0, 0x2E2150, 0x160E33, ModPlacedFeatures.DREAM_PURPLE_WOOD_PLACED_KEY));
+
     }
 
 
@@ -57,6 +63,52 @@ public class ModBiomes {
                 .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 64.0f)
                 .mobSpawnSettings(new MobSpawnSettings.Builder().build())
                 .generationSettings(biomeGenerationSettings.build())
+                .build();
+    }
+
+    public static Biome paleGarden(HolderGetter<PlacedFeature> placed,
+                                   HolderGetter<ConfiguredWorldCarver<?>> carvers, FogProfile fog) {
+        MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.commonSpawns(mobs);
+
+        BiomeGenerationSettings.Builder genetationSettings = new BiomeGenerationSettings.Builder(placed, carvers);
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genetationSettings);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genetationSettings);
+        BiomeDefaultFeatures.addDefaultMonsterRoom(genetationSettings);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genetationSettings);
+        BiomeDefaultFeatures.addDefaultSprings(genetationSettings);
+        BiomeDefaultFeatures.addSurfaceFreezing(genetationSettings);
+
+        genetationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PALE_GARDEN_VEGETATION);
+        genetationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PALE_MOSS_PATCH);
+        genetationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PALE_GARDEN_FLOWERS);
+        BiomeDefaultFeatures.addDefaultOres(genetationSettings);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genetationSettings);
+        genetationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FLOWER_PALE_GARDEN);
+        BiomeDefaultFeatures.addForestGrass(genetationSettings);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(genetationSettings, true);
+
+        var attributes = EnvironmentAttributeMap.builder()
+                .set(EnvironmentAttributes.SKY_COLOR, 0x7F8A7F)
+                .set(EnvironmentAttributes.FOG_COLOR, -8292496)
+                .set(EnvironmentAttributes.WATER_FOG_COLOR, -11179648)
+                .set(EnvironmentAttributes.BACKGROUND_MUSIC, BackgroundMusic.EMPTY)
+                .set(EnvironmentAttributes.MUSIC_VOLUME, 0.0F);
+        fog.apply(attributes);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.7F)
+                .downfall(0.8F)
+                .putAttributes(attributes.build())
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(7768221)
+                        .grassColorOverride(7832178)
+                        .foliageColorOverride(8883574)
+                        .dryFoliageColorOverride(10528412)
+                        .build())
+                .mobSpawnSettings(mobs.build())
+                .generationSettings(genetationSettings.build())
                 .build();
     }
 }

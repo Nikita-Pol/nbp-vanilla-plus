@@ -1,14 +1,10 @@
 package net.nikibropol.nbpvanillaplus.sound;
 
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.level.biome.Biomes;
 import net.nikibropol.nbpvanillaplus.NBPVanillaPlus;
 
 public class ModSounds {
@@ -18,22 +14,10 @@ public class ModSounds {
     public static final Holder.Reference<SoundEvent> ONLY_ONCE_MORE = registerSoundEventAsHolder("only_once_more");
     public static final Holder.Reference<SoundEvent> DUSK_TO_DAWN = registerSoundEventAsHolder("dusk_to_dawn");
     public static final Holder.Reference<SoundEvent> BROKEN_ETERNITY = registerSoundEventAsHolder("broken_eternity");
-
-    public static final Holder.Reference<SoundEvent> THEY_STILL_WAIT_YOU = registerSoundEventAsHolder("they_still_wait_you");
-
-    public static final Holder.Reference<SoundEvent> BREAK_TIME = registerSoundEventAsHolder("break_time");
-    public static final Holder.Reference<SoundEvent> LETS_BE_HAPPY = registerSoundEventAsHolder("lets_be_happy");
-    public static final Holder.Reference<SoundEvent> AFTER_ALL = registerSoundEventAsHolder("after_all");
-    public static final Holder.Reference<SoundEvent> BREATHE_BLUR = registerSoundEventAsHolder("breathe_blur");
-    public static final Holder.Reference<SoundEvent> EVENING = registerSoundEventAsHolder("evening");
-    public static final Holder.Reference<SoundEvent> INFORMATED = registerSoundEventAsHolder("informated");
-    public static final Holder.Reference<SoundEvent> MEMORIES = registerSoundEventAsHolder("memories");
-    public static final Holder.Reference<SoundEvent> NEBULA = registerSoundEventAsHolder("nebula");
-    public static final Holder.Reference<SoundEvent> RESTART = registerSoundEventAsHolder("restart");
-    public static final Holder.Reference<SoundEvent> STILL_THERE = registerSoundEventAsHolder("still_there");
-    public static final Holder.Reference<SoundEvent> TIMES_UP = registerSoundEventAsHolder("times_up");
-    public static final Holder.Reference<SoundEvent> AMBIENT_BROKEN_ETERNITY = registerSoundEventAsHolder("ambient_broken_eternity");
-    public static final Holder.Reference<SoundEvent> NAMELESS_ECHOES = registerSoundEventAsHolder("nameless_echoes");
+    public static final Holder.Reference<SoundEvent> SLEEPING_FOREST = registerSoundEventAsHolder("sleeping_forest");
+    public static final Holder.Reference<SoundEvent> DREAMS = registerSoundEventAsHolder("dreams");
+    public static final Holder.Reference<SoundEvent> INTO_SILENCE = registerSoundEventAsHolder("into_silence");
+    public static final Holder.Reference<SoundEvent> JUST_A_MEMORY = registerSoundEventAsHolder("just_a_memory");
 
     public static Holder.Reference<SoundEvent> registerSoundEventAsHolder(String name) {
         Identifier id = Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name);

@@ -1,4 +1,4 @@
-package net.nikibropol.nbpvanillaplus.client.render;
+package net.nikibropol.nbpvanillaplus.entity.client;
 
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

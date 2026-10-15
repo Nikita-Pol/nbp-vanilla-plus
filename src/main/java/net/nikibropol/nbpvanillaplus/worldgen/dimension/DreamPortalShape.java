@@ -64,4 +64,16 @@ public record DreamPortalShape(Direction.Axis axis, BlockPos bottomLeft, int wid
             for (int j = 0; j < height; j++)
                 level.setBlock(bottomLeft.relative(right, i).above(j), portal, 18);
     }
+
+    public boolean isAlreadyActive(LevelAccessor level) {
+        Direction right = axis == Direction.Axis.X ? Direction.EAST : Direction.SOUTH;
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                if (!level.getBlockState(bottomLeft.relative(right, i).above(j)).is(ModBlocks.DREAM_PORTAL)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

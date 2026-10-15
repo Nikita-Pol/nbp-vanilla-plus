@@ -19,14 +19,6 @@ public class ModCreativeModeTabs {
             FabricCreativeModeTab.builder().icon(() -> new ItemStack((ModItems.ECHO_INGOT)))
                     .title(Component.translatable("creativemodetab.nbp-vanilla-plus.mod_content"))
                     .displayItems((parameters, output) -> {
-                        output.accept(ModBlocks.REINFORCED_OBSIDIAN);
-                        output.accept(ModBlocks.DREAMED_OBSIDIAN);
-                        output.accept(ModBlocks.DREAMED_POWERED_OBSIDIAN);
-                        output.accept(ModBlocks.OBSIDIAN_REDSTONE_LAMP);
-                        output.accept(ModBlocks.ECHO_MAGMA);
-                        output.accept(ModBlocks.ECHO_BLOCK);
-                        output.accept(ModBlocks.DREAM_ECHO_STATUE);
-
                         output.accept(ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE);
                         output.accept(ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE);
 
@@ -35,6 +27,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RECOVERY_SHARD);
                         output.accept(ModItems.ECHO_SCRAP);
                         output.accept(ModItems.ECHO_INGOT);
+                        output.accept(ModItems.DISC_FRAGMENT_GREEN_DREAMS);
+                        output.accept(ModItems.DISC_FRAGMENT_PURPLE_DREAMS);
+                        output.accept(ModItems.DISC_FRAGMENT_BLUE_DREAMS);
+                        output.accept(ModItems.DISC_FRAGMENT_LIGHT_BLUE_DREAMS);
 
                         output.accept(ModItems.ECHO_SWORD);
                         output.accept(ModItems.ECHO_PICKAXE);
@@ -62,6 +58,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.STRANGE_BEETROOT);
                         output.accept(ModItems.FLOWTAREM);
                         output.accept(ModItems.RESIN_FLOWTAREM);
+                        output.accept(ModItems.DREAM_BREAD);
 
                         output.accept(ModItems.BUNCH_OF_SUGAR_CANE);
                         output.accept(ModItems.BUNCH_OF_CHORUS_FRUIT);
@@ -77,12 +74,39 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BUNCH_OF_FLOWTAREM);
                         output.accept(ModItems.BUNCH_OF_RESIN_FLOWTAREM);
 
+                        output.accept(ModItems.LIGHT_SCANNER);
                         output.accept(ModItems.COBBLER);
                         output.accept(ModItems.EXTENDER);
 
                         output.accept(ModItems.ONLY_ONCE_MORE_MUSIC_DISC);
                         output.accept(ModItems.DUSK_TO_DAWN_MUSIC_DISC);
+                        output.accept(ModItems.INTO_SILENCE_MUSIC_DISC);
                         output.accept(ModItems.BROKEN_ETERNITY_MUSIC_DISC);
+                        output.accept(ModItems.SLEEPING_FOREST_MUSIC_DISC);
+                        output.accept(ModItems.JUST_A_MEMORY_MUSIC_DISC);
+                        output.accept(ModItems.DREAMS_MUSIC_DISC);
+
+                        output.accept(ModBlocks.SUSPICIOUS_DIRT);
+                        output.accept(ModBlocks.REINFORCED_OBSIDIAN);
+                        output.accept(ModBlocks.DREAMED_OBSIDIAN);
+                        output.accept(ModBlocks.DREAMED_POWERED_OBSIDIAN);
+                        output.accept(ModBlocks.OBSIDIAN_REDSTONE_LAMP);
+                        output.accept(ModBlocks.ECHO_MAGMA);
+                        output.accept(ModBlocks.ECHO_BLOCK);
+                        output.accept(ModBlocks.RESIN_ECHO_CLUMP);
+                        output.accept(ModBlocks.RESIN_ECHO_BLOCK);
+                        output.accept(ModBlocks.RESIN_ECHO_BRICKS);
+                        output.accept(ModBlocks.RESIN_ECHO_BRICKS_STAIRS);
+                        output.accept(ModBlocks.RESIN_ECHO_BRICKS_SLAB);
+                        output.accept(ModBlocks.RESIN_ECHO_BRICKS_WALL);
+                        output.accept(ModBlocks.CHISELED_RESIN_ECHO_BRICKS);
+                        output.accept(ModBlocks.RESIN_ENDER_BRICKS);
+                        output.accept(ModBlocks.RESIN_ENDER_BRICKS_STAIRS);
+                        output.accept(ModBlocks.RESIN_ENDER_BRICKS_SLAB);
+                        output.accept(ModBlocks.RESIN_ENDER_BRICKS_WALL);
+                        output.accept(ModBlocks.CHISELED_RESIN_ENDER_BRICKS);
+                        output.accept(ModBlocks.ECHO_CREAKING_HEART);
+                        output.accept(ModBlocks.DREAM_ECHO_STATUE);
 
                         output.accept(ModBlocks.DREAM_GREEN_WOOD);
                         output.accept(ModBlocks.DREAM_GREEN_LOG);
@@ -165,6 +189,7 @@ public class ModCreativeModeTabs {
                             output.accept(ModBlocks.REINFORCED_SHULKER_BOXES.get(color));
                         }
 
+                        output.accept(ModItems.ECHO_CREAKING_SPAWN_EGG);
                     })
                     .build());
 

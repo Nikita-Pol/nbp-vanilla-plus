@@ -40,6 +40,7 @@ public class ModVillagerTrades {
     public static final ResourceKey<VillagerTrade> DREAMER_3_BUNCH_OF_ECHO_BERRIES_EMERALD = createKey("dreamer/3/bunch_of_echo_berries_emerald");
     public static final ResourceKey<VillagerTrade> DREAMER_3_BUNCH_OF_AMETHYST_SWEET_BERRIES_EMERALD = createKey("dreamer/3/bunch_of_amethyst_sweet_berries_emerald");
     public static final ResourceKey<VillagerTrade> DREAMER_4_RESIN_CLUMP_EMERALD = createKey("dreamer/4/resin_clump_emerald");
+    public static final ResourceKey<VillagerTrade> DREAMER_4_RESIN_ECHO_CLUMP_EMERALD = createKey("dreamer/4/resin_echo_clump_emerald");
     public static final ResourceKey<VillagerTrade> DREAMER_4_ECHO_SCRAP_SHULKER_SHELL = createKey("dreamer/4/echo_scrap_shulker_shell");
     public static final ResourceKey<VillagerTrade> DREAMER_4_ECHO_SCRAP_HEAVY_CORE = createKey("dreamer/4/echo_scrap_heavy_core");
     public static final ResourceKey<VillagerTrade> DREAMER_5_ECHO_SHARD_BROKEN_ETERNITY_MUSIC_DISC = createKey("dreamer/5/echo_shard_broken_eternity_music_disc");
@@ -136,6 +137,11 @@ public class ModVillagerTrades {
                 Optional.empty(), List.of()));
         context.register(DREAMER_4_RESIN_CLUMP_EMERALD,new VillagerTrade(
                 new TradeCost(Items.RESIN_CLUMP, 22),
+                new ItemStackTemplate(Items.EMERALD),
+                16, 25, 0.05f,
+                Optional.empty(), List.of()));
+        context.register(DREAMER_4_RESIN_ECHO_CLUMP_EMERALD,new VillagerTrade(
+                new TradeCost(ModItems.RESIN_ECHO_CLUMP, 22),
                 new ItemStackTemplate(Items.EMERALD),
                 16, 25, 0.05f,
                 Optional.empty(), List.of()));

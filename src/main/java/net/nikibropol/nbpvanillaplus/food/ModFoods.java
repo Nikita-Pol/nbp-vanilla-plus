@@ -22,12 +22,14 @@ public class ModFoods {
 
     public static final FoodProperties STRANGE_BEETROOT = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3F).alwaysEdible().build();
 
+    public static final FoodProperties DREAM_BREAD = new FoodProperties.Builder().nutrition(5).saturationModifier(0.6F).alwaysEdible().build();
+
     public static final FoodProperties FLOWTAREM = new FoodProperties.Builder().nutrition(3).saturationModifier(0.8F).alwaysEdible().build();
     public static final FoodProperties RESIN_FLOWTAREM = new FoodProperties.Builder().nutrition(5).saturationModifier(0.6F).alwaysEdible().build();
 
     public static final Consumable ECHOBERRY_CONSUMABLE = Consumables.defaultFood()
             .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.DARKNESS, 400, 0), 0.05F))
-            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(ModEffects.SILENCE, 300, 0), 1F))
+            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(ModEffects.SILENCE, 150, 0), 1F))
             .consumeSeconds(2f).animation(ItemUseAnimation.EAT).sound(SoundEvents.GENERIC_EAT).hasConsumeParticles(true).build();
 
     public static final Consumable AMETHYST_SWEET_BERRIES_CONSUMABLE = Consumables.defaultFood()
@@ -39,6 +41,8 @@ public class ModFoods {
             .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(ModEffects.STRANGE_BEETROOT_DAMAGE, 1, 0)))
             .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.LEVITATION, 120, 0)))
             .consumeSeconds(1.5f).animation(ItemUseAnimation.EAT).sound(SoundEvents.GENERIC_EAT).hasConsumeParticles(true).build();
+    public static final Consumable DREAM_BREAD_CONSUMABLE = Consumables.defaultFood()
+            .consumeSeconds(1.5f).animation(ItemUseAnimation.EAT).sound(SoundEvents.GENERIC_EAT).hasConsumeParticles(true).build();
 
     public static final Consumable FLOWTAREM_CONSUMABLE = Consumables.defaultFood()
             .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.HERO_OF_THE_VILLAGE, 100, 0)))
@@ -46,7 +50,7 @@ public class ModFoods {
 
     public static final Consumable RESIN_FLOWTAREM_CONSUMABLE = Consumables.defaultFood()
             .onConsume(new RemoveStatusEffectsConsumeEffect(HolderSet.direct(MobEffects.DARKNESS)))
-            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 400, 0)))
-            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.OOZING, 400, 0)))
+            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 200, 0)))
+            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.OOZING, 200, 0)))
             .consumeSeconds(2.5f).animation(ItemUseAnimation.EAT).sound(SoundEvents.GENERIC_EAT).hasConsumeParticles(true).build();
 }

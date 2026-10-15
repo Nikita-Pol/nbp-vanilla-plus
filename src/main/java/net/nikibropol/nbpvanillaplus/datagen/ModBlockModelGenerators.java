@@ -25,6 +25,7 @@ import net.nikibropol.nbpvanillaplus.block.ModBlocks;
 import net.nikibropol.nbpvanillaplus.block.custom.DreamEchoStatueBlock;
 import net.nikibropol.nbpvanillaplus.block.custom.DreamPetalsBlock;
 import net.nikibropol.nbpvanillaplus.block.custom.DreamPortalBlock;
+import net.nikibropol.nbpvanillaplus.item.ModItems;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Map;
@@ -108,6 +109,20 @@ public class ModBlockModelGenerators extends BlockModelGenerators{
             Optional.of("_4"),
             TextureSlot.TEXTURE
     );
+    public static final ModelTemplate RESIN_CLUMP_TEMPLATE = new ModelTemplate(
+            Optional.of(Identifier.withDefaultNamespace("block/resin_clump")),
+            Optional.empty(),
+            TextureSlot.TEXTURE, TextureSlot.PARTICLE);
+
+    static void generateClump(BlockModelGenerators blockModelGenerators, Block block, Item item, ModelTemplate template) {
+        var tex = TextureMapping.getBlockTexture(block);
+        TextureMapping mapping = new TextureMapping()
+                .put(TextureSlot.TEXTURE, tex)
+                .put(TextureSlot.PARTICLE, tex);
+
+        template.create(block, mapping, blockModelGenerators.modelOutput);
+        blockModelGenerators.createMultiface(block, item);
+    }
 
     public static void generateDreamPetals(BlockModelGenerators blockModelGenerators, Block block) {
         TextureMapping textures = new TextureMapping()
@@ -228,4 +243,5 @@ public class ModBlockModelGenerators extends BlockModelGenerators{
                         .select(Direction.Axis.X, BlockModelGenerators.plainVariant(ns))
                         .select(Direction.Axis.Z, BlockModelGenerators.plainVariant(ew))));
     }
+
 }

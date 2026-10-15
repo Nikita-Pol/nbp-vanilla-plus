@@ -122,7 +122,23 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.DREAM_LIGHT_BLUE_SAPLING);
         add(ModBlocks.POTTED_DREAM_LIGHT_BLUE_SAPLING, block -> createPotFlowerItemTable(ModBlocks.DREAM_LIGHT_BLUE_SAPLING));
 
-        dropSelf(ModBlocks.ECHO_BLOCK);
+        dropSelf(ModBlocks.RESIN_ECHO_CLUMP);
+        dropSelf(ModBlocks.RESIN_ECHO_BLOCK);
+        dropSelf(ModBlocks.RESIN_ECHO_BRICKS);
+        dropSelf(ModBlocks.RESIN_ENDER_BRICKS);
+        dropSelf(ModBlocks.RESIN_ECHO_BRICKS_STAIRS);
+        dropSelf(ModBlocks.RESIN_ENDER_BRICKS_STAIRS);
+        dropSelf(ModBlocks.RESIN_ECHO_BRICKS_SLAB);
+        dropSelf(ModBlocks.RESIN_ENDER_BRICKS_SLAB);
+        dropSelf(ModBlocks.RESIN_ECHO_BRICKS_WALL);
+        dropSelf(ModBlocks.RESIN_ENDER_BRICKS_WALL);
+        dropSelf(ModBlocks.CHISELED_RESIN_ECHO_BRICKS);
+        dropSelf(ModBlocks.CHISELED_RESIN_ENDER_BRICKS);
+        add(ModBlocks.ECHO_CREAKING_HEART, block ->
+                createSilkTouchDispatchTable(block,applyExplosionDecay(block,
+                                LootItem.lootTableItem(Items.RESIN_CLUMP)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                                        .apply(ApplyBonusCount.addUniformBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE))))));
         dropSelf(ModBlocks.ECHO_MAGMA);
         dropSelf(ModBlocks.REINFORCED_OBSIDIAN);
         dropSelf(ModBlocks.DREAMED_OBSIDIAN);

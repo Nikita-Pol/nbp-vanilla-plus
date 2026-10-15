@@ -3,10 +3,12 @@ package net.nikibropol.nbpvanillaplus.tags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.trading.VillagerTrade;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.nikibropol.nbpvanillaplus.NBPVanillaPlus;
 import org.lwjgl.vulkan.VkDependencyInfoKHR;
 
@@ -33,6 +35,10 @@ public class ModTags {
                 Registries.BLOCK,
                 Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "dream_petals")
         );
+
+        public static final TagKey<Block> PALE_FOG_SOURCES = TagKey.create(Registries.BLOCK,
+                Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "pale_fog_sources"));
+
         private static TagKey<Block> createTag(String name){
             return  TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name));
         }
@@ -73,4 +79,20 @@ public class ModTags {
             return TagKey.create(Registries.VILLAGER_TRADE, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name));
         }
         }
+
+    public static class Entities {
+        public static final TagKey<EntityType<?>> ECHO_CREAKING_HEARS = createTag("echo_creaking_hears");
+
+        private static TagKey<EntityType<?>> createTag(String name) {
+            return TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name));
+        }
+    }
+
+    public static class GameEvents {
+        public static final TagKey<GameEvent> ECHO_CREAKING_LISTENS = createTag("echo_creaking_listens");
+
+        private static TagKey<GameEvent> createTag(String name) {
+            return TagKey.create(Registries.GAME_EVENT, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name));
+        }
+    }
 }
