@@ -1,7 +1,9 @@
 # NBP Vanilla Plus
 This is a mod to make Minecraft easier and more QoL, but you'll have to work for it.
 
-_Now in early development._
+_Now in development._
+
+**Requires SODIUM**
 
 ![All things on version 0.1.0](https://cdn.modrinth.com/data/cached_images/29a3769dcd59d19f27a8444b24609ad11c40d261.jpeg)
 
