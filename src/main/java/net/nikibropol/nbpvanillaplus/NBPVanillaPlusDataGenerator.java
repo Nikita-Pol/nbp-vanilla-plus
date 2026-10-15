@@ -11,6 +11,7 @@ import net.nikibropol.nbpvanillaplus.datagen.villager.ModVillagerTradeTags;
 import net.nikibropol.nbpvanillaplus.datagen.villager.ModVillagerTrades;
 import net.nikibropol.nbpvanillaplus.worldgen.ModConfiguredFeatures;
 import net.nikibropol.nbpvanillaplus.worldgen.ModPlacedFeatures;
+import net.nikibropol.nbpvanillaplus.worldgen.ModTimelines;
 import net.nikibropol.nbpvanillaplus.worldgen.biome.ModBiomes;
 import net.nikibropol.nbpvanillaplus.worldgen.dimension.ModDimensions;
 import net.nikibropol.nbpvanillaplus.worldgen.structures.ModStructures;
@@ -35,6 +36,10 @@ public class NBPVanillaPlusDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModAtlasProvider::new);
 		pack.addProvider(ModChestLootProvider::new);
         pack.addProvider(ModBiomeTagsProvider::new);
+        pack.addProvider(ModTimelineTagProvider::new);
+		pack.addProvider(ModEntityTypeTagProvider::new);
+		pack.addProvider(ModGameEventTagProvider::new);
+		pack.addProvider(ModArchaeologyLootProvider::new);
 	}
 
 	@Override
@@ -55,5 +60,7 @@ public class NBPVanillaPlusDataGenerator implements DataGeneratorEntrypoint {
 		registryBuilder.add(Registries.TEMPLATE_POOL, ModStructures::bootstrapPools);
 		registryBuilder.add(Registries.STRUCTURE, ModStructures::bootstrapStructures);
 		registryBuilder.add(Registries.STRUCTURE_SET, ModStructures::bootstrapSets);
+
+		registryBuilder.add(Registries.TIMELINE, ModTimelines::bootstrap);
 	}
 }

@@ -12,6 +12,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -36,6 +37,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             @Override
             public void buildRecipes() {
                 List<ItemLike> SMELTABLE_OBSIDIAN = List.of(Items.OBSIDIAN);
+                List<ItemLike> SMELTABLE_RESIN_ECHO_BRICKS = List.of(ModBlocks.RESIN_ECHO_BLOCK);
 
                 oreSmelting(SMELTABLE_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.REINFORCED_OBSIDIAN, 5f, 1600, "reinforced_obsidian");
 
@@ -238,6 +240,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItems.DREAM_SEEDS), has(ModItems.DREAM_SEEDS))
                         .group("dream_seeds")
                         .save(output, "dream_seeds_craft");
+                shapeless(RecipeCategory.MISC, ModItems.DREAM_BREAD)
+                        .requires(Items.BREAD)
+                        .requires(ModBlocks.DREAM_PETALS_GREEN)
+                        .requires(ModBlocks.DREAM_PETALS_BLUE)
+                        .requires(ModBlocks.DREAM_PETALS_PURPLE)
+                        .requires(ModBlocks.DREAM_PETALS_LIGHT_BLUE)
+                        .unlockedBy(getHasName(Items.BREAD), has(Items.BREAD))
+                        .group("dream_bread")
+                        .save(output, "dream_bread_craft");
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DREAMED_OBSIDIAN)
                         .pattern("GPB")
@@ -251,6 +262,78 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.REINFORCED_OBSIDIAN), has(ModBlocks.REINFORCED_OBSIDIAN))
                         .group("dreamed_obsidian")
                         .save(output, "dreamed_obsidian_craft");
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ENDER_BRICKS, 8)
+                        .pattern("RRR")
+                        .pattern("RER")
+                        .pattern("RRR")
+                        .define('R', Blocks.RESIN_BRICKS)
+                        .define('E', Items.ENDER_PEARL)
+                        .unlockedBy(getHasName(Items.ENDER_PEARL), has(Items.ENDER_PEARL))
+                        .unlockedBy(getHasName(Blocks.RESIN_BRICKS), has(Blocks.RESIN_BRICKS))
+                        .group("resin_ender_bricks")
+                        .save(output, "resin_ender_bricks_craft");
+
+                nineBlockStorageRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.RESIN_ECHO_CLUMP, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ECHO_BLOCK);
+
+                oreSmelting(SMELTABLE_RESIN_ECHO_BRICKS, RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, ModBlocks.RESIN_ECHO_BRICKS, 1f, 200, "resin_echo_bricks");
+
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ECHO_BRICKS_STAIRS, ModBlocks.RESIN_ECHO_BRICKS);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ECHO_BRICKS_SLAB, ModBlocks.RESIN_ECHO_BRICKS, 2);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ECHO_BRICKS_WALL, ModBlocks.RESIN_ECHO_BRICKS);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RESIN_ECHO_BRICKS, ModBlocks.RESIN_ECHO_BRICKS);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ENDER_BRICKS_STAIRS, ModBlocks.RESIN_ENDER_BRICKS);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ENDER_BRICKS_SLAB, ModBlocks.RESIN_ENDER_BRICKS, 2);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ENDER_BRICKS_WALL, ModBlocks.RESIN_ENDER_BRICKS);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RESIN_ENDER_BRICKS, ModBlocks.RESIN_ENDER_BRICKS);
+
+                stairBuilder(ModBlocks.RESIN_ECHO_BRICKS_STAIRS, Ingredient.of(ModBlocks.RESIN_ECHO_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.RESIN_ECHO_BRICKS), has(ModBlocks.RESIN_ECHO_BRICKS))
+                        .group("resin_echo_bricks_stairs").save(output);
+                stairBuilder(ModBlocks.RESIN_ENDER_BRICKS_STAIRS, Ingredient.of(ModBlocks.RESIN_ENDER_BRICKS))
+                        .unlockedBy(getHasName(ModBlocks.RESIN_ENDER_BRICKS), has(ModBlocks.RESIN_ENDER_BRICKS))
+                        .group("resin_echo_bricks_stairs").save(output);
+                slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ECHO_BRICKS_SLAB, ModBlocks.RESIN_ECHO_BRICKS);
+                slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ENDER_BRICKS_SLAB, ModBlocks.RESIN_ENDER_BRICKS);
+                wall(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ECHO_BRICKS_WALL, ModBlocks.RESIN_ECHO_BRICKS);
+                wall(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RESIN_ENDER_BRICKS_WALL, ModBlocks.RESIN_ENDER_BRICKS);
+                chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RESIN_ECHO_BRICKS,
+                        Ingredient.of(ModBlocks.RESIN_ECHO_BRICKS_SLAB))
+                        .unlockedBy(getHasName(ModBlocks.RESIN_ECHO_BRICKS_SLAB), has(ModBlocks.RESIN_ECHO_BRICKS_SLAB))
+                        .save(output);
+                chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RESIN_ENDER_BRICKS,
+                        Ingredient.of(ModBlocks.RESIN_ENDER_BRICKS_SLAB))
+                        .unlockedBy(getHasName(ModBlocks.RESIN_ENDER_BRICKS_SLAB), has(ModBlocks.RESIN_ENDER_BRICKS_SLAB))
+                        .save(output);
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ECHO_CREAKING_HEART, 1)
+                        .pattern("P")
+                        .pattern("R")
+                        .pattern("P")
+                        .define('R', ModBlocks.RESIN_ECHO_BLOCK)
+                        .define('P', Blocks.PALE_OAK_LOG)
+                        .unlockedBy(getHasName(Blocks.PALE_OAK_LOG), has(Blocks.PALE_OAK_LOG))
+                        .unlockedBy(getHasName(ModBlocks.RESIN_ECHO_BLOCK), has(ModBlocks.RESIN_ECHO_BLOCK))
+                        .group("echo_creaking_heart")
+                        .save(output, "echo_creaking_heart_craft");
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ECHO_CREAKING_HEART, 1)
+                        .pattern("EEE")
+                        .pattern("ECE")
+                        .pattern("EEE")
+                        .define('E', ModItems.FUSED_ECHO_SHARD)
+                        .define('C', Blocks.CREAKING_HEART)
+                        .unlockedBy(getHasName(ModItems.FUSED_ECHO_SHARD), has(ModItems.FUSED_ECHO_SHARD))
+                        .unlockedBy(getHasName(Blocks.CREAKING_HEART), has(Blocks.CREAKING_HEART))
+                        .group("echo_creaking_heart")
+                        .save(output, "echo_creaking_heart_craft_from_shards");
+
+                shapeless(RecipeCategory.TOOLS, ModItems.LIGHT_SCANNER)
+                        .requires(ModItems.FUSED_ECHO_SHARD)
+                        .requires(Items.REDSTONE_TORCH)
+                        .unlockedBy(getHasName(ModItems.FUSED_ECHO_SHARD), has(ModItems.FUSED_ECHO_SHARD))
+                        .group("light_scanner")
+                        .save(output, "light_scanner_craft");
 
                 Smithing(this, ModItems.ECHO_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_INGOT, RecipeCategory.MISC, Items.HEAVY_CORE, ModItems.ECHO_INGOT, output);
 
@@ -288,6 +371,52 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.red(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"red", output);
                 Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.white(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"white", output);
                 Smithing(this, ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE, ModBlocks.DREAMED_OBSIDIAN, RecipeCategory.BUILDING_BLOCKS, Blocks.BED.yellow(), ModBlocks.DREAMED_POWERED_OBSIDIAN,"yellow", output);
+
+                shaped(RecipeCategory.MISC, ModItems.SLEEPING_FOREST_MUSIC_DISC)
+                        .pattern("OPL")
+                        .pattern("BDH")
+                        .pattern("GSC")
+                        .define('O', Blocks.OAK_SAPLING)
+                        .define('P', ModBlocks.DREAM_PURPLE_SAPLING)
+                        .define('L', ModBlocks.DREAM_LIGHT_BLUE_SAPLING)
+                        .define('B', ModBlocks.DREAM_BLUE_SAPLING)
+                        .define('D', ModItems.BROKEN_ETERNITY_MUSIC_DISC)
+                        .define('H', Blocks.PALE_OAK_SAPLING)
+                        .define('G', ModBlocks.DREAM_GREEN_SAPLING)
+                        .define('S', Blocks.SPRUCE_SAPLING)
+                        .define('C', Blocks.CHERRY_SAPLING)
+                        .unlockedBy(getHasName(Blocks.OAK_SAPLING), has(Blocks.OAK_SAPLING))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_PURPLE_SAPLING), has(ModBlocks.DREAM_PURPLE_SAPLING))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_LIGHT_BLUE_SAPLING), has(ModBlocks.DREAM_LIGHT_BLUE_SAPLING))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_BLUE_SAPLING), has(ModBlocks.DREAM_BLUE_SAPLING))
+                        .unlockedBy(getHasName(ModItems.BROKEN_ETERNITY_MUSIC_DISC), has(ModItems.BROKEN_ETERNITY_MUSIC_DISC))
+                        .unlockedBy(getHasName(Blocks.PALE_OAK_SAPLING), has(Blocks.PALE_OAK_SAPLING))
+                        .unlockedBy(getHasName(ModBlocks.DREAM_GREEN_SAPLING), has(ModBlocks.DREAM_GREEN_SAPLING))
+                        .unlockedBy(getHasName(Blocks.SPRUCE_SAPLING), has(Blocks.SPRUCE_SAPLING))
+                        .unlockedBy(getHasName(Blocks.CHERRY_SAPLING), has(Blocks.CHERRY_SAPLING))
+                        .group("sleeping_forest_music_disc")
+                        .save(output, "sleeping_forest_music_disc_craft");
+
+                shaped(RecipeCategory.MISC, ModItems.DREAMS_MUSIC_DISC)
+                        .pattern("LEP")
+                        .pattern("AJI")
+                        .pattern("GSB")
+                        .define('L', ModItems.DISC_FRAGMENT_LIGHT_BLUE_DREAMS)
+                        .define('P', ModItems.DISC_FRAGMENT_PURPLE_DREAMS)
+                        .define('G', ModItems.DISC_FRAGMENT_GREEN_DREAMS)
+                        .define('B', ModItems.DISC_FRAGMENT_BLUE_DREAMS)
+                        .define('E', ModItems.EXTENDER)
+                        .define('S', ModBlocks.DREAM_ECHO_STATUE)
+                        .define('I', ModItems.ECHO_SCRAP)
+                        .define('J', ModItems.JUST_A_MEMORY_MUSIC_DISC)
+                        .define('A', ModItems.AMETHYST_UPGRADE_SMITHING_TEMPLATE)
+                        .unlockedBy(getHasName(ModItems.DISC_FRAGMENT_LIGHT_BLUE_DREAMS), has(ModItems.DISC_FRAGMENT_LIGHT_BLUE_DREAMS))
+                        .unlockedBy(getHasName(ModItems.DISC_FRAGMENT_PURPLE_DREAMS), has(ModItems.DISC_FRAGMENT_PURPLE_DREAMS))
+                        .unlockedBy(getHasName(ModItems.DISC_FRAGMENT_GREEN_DREAMS), has(ModItems.DISC_FRAGMENT_GREEN_DREAMS))
+                        .unlockedBy(getHasName(ModItems.DISC_FRAGMENT_BLUE_DREAMS), has(ModItems.DISC_FRAGMENT_BLUE_DREAMS))
+                        .unlockedBy(getHasName(ModItems.JUST_A_MEMORY_MUSIC_DISC), has(ModItems.JUST_A_MEMORY_MUSIC_DISC))
+                        .group("dreams_music_disc")
+                        .save(output, "dreams_music_disc_craft");
 
                 shaped(RecipeCategory.MISC, Items.LIGHT, 16)
                         .pattern("IGR")

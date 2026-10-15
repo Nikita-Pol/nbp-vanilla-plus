@@ -1,8 +1,10 @@
 package net.nikibropol.nbpvanillaplus.mixin;
 
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.nikibropol.nbpvanillaplus.effect.ModEffects;
+import net.nikibropol.nbpvanillaplus.item.ModItems;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

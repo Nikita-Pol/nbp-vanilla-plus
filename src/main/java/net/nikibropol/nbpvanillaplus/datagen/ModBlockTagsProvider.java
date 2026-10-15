@@ -176,6 +176,12 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         tag(ModTags.Blocks.INCORRECT_FOR_ECHO_TOOL);
 
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.getRK(ModBlocks.ECHO_CREAKING_HEART));
+
+        tag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .add(ModBlocks.getRK(ModBlocks.SUSPICIOUS_DIRT));
+
         tag(BlockTags.CROPS)
                 .add(ModBlocks.getRK(ModBlocks.STRANGE_BEETROOT_CROP))
                 .add(ModBlocks.getRK(ModBlocks.FLOWTAREM_CROP))
@@ -204,5 +210,17 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getRK(ModBlocks.ECHO_MAGMA))
                 .add(ModBlocks.getRK(ModBlocks.ECHO_VINES))
                 .add(ModBlocks.getRK(ModBlocks.ECHO_VINES_PLANT));
+
+        tag(ModTags.Blocks.PALE_FOG_SOURCES)
+                .add(ModBlocks.getRK(Blocks.PALE_OAK_LOG))
+                .add(ModBlocks.getRK(Blocks.PALE_OAK_WOOD))
+                .add(ModBlocks.getRK(Blocks.PALE_OAK_LEAVES))
+                .add(ModBlocks.getRK(Blocks.PALE_MOSS_BLOCK))
+                .add(ModBlocks.getRK(Blocks.PALE_MOSS_CARPET))
+                .add(ModBlocks.getRK(Blocks.PALE_HANGING_MOSS))
+                .add(ModBlocks.getRK(Blocks.OPEN_EYEBLOSSOM))
+                .add(ModBlocks.getRK(Blocks.CLOSED_EYEBLOSSOM))
+                .add(ModBlocks.getRK(Blocks.CREAKING_HEART))
+                .add(ModBlocks.getRK(ModBlocks.ECHO_CREAKING_HEART));
     }
 }

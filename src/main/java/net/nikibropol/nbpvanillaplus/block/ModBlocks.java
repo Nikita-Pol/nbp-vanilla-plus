@@ -7,11 +7,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BlockEntityTypeIds;
+import net.minecraft.world.level.block.entity.BlockEntityTypes;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -127,6 +129,64 @@ public class ModBlocks {
                     .isValidSpawn((statex, blockGetter, blockPos, entityType) -> entityType.fireImmune())),
                     Rarity.UNCOMMON);
 
+    public static final Block RESIN_ECHO_CLUMP = registerBlockWithoutBlockItem("resin_echo_clump",
+            properties -> new MultifaceBlock(properties.instrument(NoteBlockInstrument.BASEDRUM)
+                    .sound(SoundType.RESIN).replaceable().noCollision().ignitedByLava().pushReaction(PushReaction.DESTROY)));
+
+    public static final Block RESIN_ECHO_BLOCK = registerBlock("resin_echo_block",
+            properties -> new Block(properties.instrument(NoteBlockInstrument.BASEDRUM)
+                    .sound(SoundType.RESIN)), Rarity.UNCOMMON);
+
+    public static final Block RESIN_ECHO_BRICKS = registerBlock("resin_echo_bricks",
+            properties -> new Block(properties.strength(1.5F, 6.0F)
+                    .instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_BLUE)
+                    .requiresCorrectToolForDrops().sound(SoundType.RESIN_BRICKS)), Rarity.UNCOMMON);
+    public static final Block RESIN_ENDER_BRICKS = registerBlock("resin_ender_bricks",
+            properties -> new Block(properties.strength(1.5F, 6.0F)
+                    .instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_CYAN)
+                    .requiresCorrectToolForDrops().sound(SoundType.RESIN_BRICKS)), Rarity.COMMON);
+    public static final Block CHISELED_RESIN_ECHO_BRICKS = registerBlock("chiseled_resin_echo_bricks",
+            properties -> new Block(properties.mapColor(MapColor.TERRACOTTA_BLUE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.RESIN_BRICKS)
+                    .strength(1.5F, 6.0F)), Rarity.UNCOMMON);
+    public static final Block CHISELED_RESIN_ENDER_BRICKS = registerBlock("chiseled_resin_ender_bricks",
+            properties -> new Block(properties.mapColor(MapColor.TERRACOTTA_CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.RESIN_BRICKS)
+                    .strength(1.5F, 6.0F)));
+    public static final Block RESIN_ECHO_BRICKS_STAIRS = registerBlock("resin_echo_bricks_stairs",
+            properties -> new StairBlock(ModBlocks.RESIN_ECHO_BRICKS.defaultBlockState(), properties.mapColor(MapColor.TERRACOTTA_BLUE)
+                    .requiresCorrectToolForDrops().sound(SoundType.RESIN_BRICKS)
+                    .strength(1.5F, 6.0F)));
+    public static final Block RESIN_ENDER_BRICKS_STAIRS = registerBlock("resin_ender_bricks_stairs",
+            properties -> new StairBlock(ModBlocks.RESIN_ENDER_BRICKS.defaultBlockState(), properties.mapColor(MapColor.TERRACOTTA_CYAN)
+                    .requiresCorrectToolForDrops().sound(SoundType.RESIN_BRICKS)
+                    .strength(1.5F, 6.0F)));
+    public static final Block RESIN_ECHO_BRICKS_SLAB = registerBlock("resin_echo_bricks_slab",
+            properties -> new SlabBlock(properties.strength(1.5F, 6.0F)
+                    .instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_BLUE)
+                    .requiresCorrectToolForDrops().sound(SoundType.RESIN_BRICKS)), Rarity.UNCOMMON);
+    public static final Block RESIN_ENDER_BRICKS_SLAB = registerBlock("resin_ender_bricks_slab",
+            properties -> new SlabBlock(properties.strength(1.5F, 6.0F)
+                    .instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_CYAN)
+                    .requiresCorrectToolForDrops().sound(SoundType.RESIN_BRICKS)), Rarity.COMMON);
+    public static final Block RESIN_ECHO_BRICKS_WALL = registerBlock("resin_echo_bricks_wall",
+            properties -> new WallBlock(properties.strength(1.5F, 6.0F)
+                    .instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_BLUE)
+                    .requiresCorrectToolForDrops().sound(SoundType.RESIN_BRICKS)), Rarity.UNCOMMON);
+    public static final Block RESIN_ENDER_BRICKS_WALL = registerBlock("resin_ender_bricks_wall",
+            properties -> new WallBlock(properties.strength(1.5F, 6.0F)
+                    .instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_CYAN)
+                    .requiresCorrectToolForDrops().sound(SoundType.RESIN_BRICKS)), Rarity.COMMON);
+
+    public static final Block ECHO_CREAKING_HEART = registerBlock("echo_creaking_heart",
+        properties -> new EchoCreakingHeartBlock(properties.mapColor(MapColor.COLOR_LIGHT_BLUE)
+                .instrument(NoteBlockInstrument.BASEDRUM).strength(15.0F).sound(SoundType.CREAKING_HEART)));
+
+    public static final Block SUSPICIOUS_DIRT = registerBlock("suspicious_dirt",
+            properties -> new BrushableBlock(Blocks.DIRT, SoundEvents.BRUSH_GRAVEL, SoundEvents.BRUSH_GRAVEL_COMPLETED,
+                    properties.mapColor(MapColor.DIRT).strength(0.25F)
+                            .sound(SoundType.SUSPICIOUS_GRAVEL).pushReaction(PushReaction.DESTROY)));
+
     public static final Block DREAM_GREEN_LOG = registerBlock("dream_green_log",
             properties -> new RotatedPillarBlock(properties.strength(2f).instrument(NoteBlockInstrument.BASS)
                     .sound(SoundType.WOOD).ignitedByLava()));
@@ -148,7 +208,7 @@ public class ModBlocks {
                             .isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never)
                             .ignitedByLava().pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never)));
     public static final Block DREAM_GREEN_WOOD_STAIRS = registerBlock("dream_green_wood_stairs",
-            properties -> new StairBlock(ModBlocks.DREAM_GREEN_PLANKS.defaultBlockState() ,properties.strength(2f).instrument(NoteBlockInstrument.BASS)
+            properties -> new StairBlock(ModBlocks.DREAM_GREEN_PLANKS.defaultBlockState(), properties.strength(2f).instrument(NoteBlockInstrument.BASS)
                     .sound(SoundType.WOOD).ignitedByLava()));
     public static final Block DREAM_GREEN_WOOD_SLAB = registerBlock("dream_green_wood_slab",
             properties -> new SlabBlock(properties.strength(0.5f).instrument(NoteBlockInstrument.BASS)
@@ -383,30 +443,23 @@ public class ModBlocks {
             new DreamPortalBlock(properties.noCollision().noLootTable().strength(-1.0F).lightLevel(s -> 11)
             .pushReaction(PushReaction.BLOCK).noOcclusion()));
 
-    public static void registerModSignBlocks() {
+
+    public static void registerBlockTypes() {
         addValidBlocks(BuiltInRegistries.BLOCK_ENTITY_TYPE.getValue(BlockEntityTypeIds.SIGN),
-                DREAM_GREEN_WOOD_SIGN, DREAM_GREEN_WOOD_WALL_SIGN);
-
-        addValidBlocks(BuiltInRegistries.BLOCK_ENTITY_TYPE.getValue(BlockEntityTypeIds.HANGING_SIGN),
-                DREAM_GREEN_WOOD_HANGING_SIGN, DREAM_GREEN_WOOD_WALL_HANGING_SIGN);
-
-        addValidBlocks(BuiltInRegistries.BLOCK_ENTITY_TYPE.getValue(BlockEntityTypeIds.SIGN),
-                DREAM_PURPLE_WOOD_SIGN, DREAM_PURPLE_WOOD_WALL_SIGN);
-
-        addValidBlocks(BuiltInRegistries.BLOCK_ENTITY_TYPE.getValue(BlockEntityTypeIds.HANGING_SIGN),
-                DREAM_PURPLE_WOOD_HANGING_SIGN, DREAM_PURPLE_WOOD_WALL_HANGING_SIGN);
-
-        addValidBlocks(BuiltInRegistries.BLOCK_ENTITY_TYPE.getValue(BlockEntityTypeIds.SIGN),
-                DREAM_BLUE_WOOD_SIGN, DREAM_BLUE_WOOD_WALL_SIGN);
-
-        addValidBlocks(BuiltInRegistries.BLOCK_ENTITY_TYPE.getValue(BlockEntityTypeIds.HANGING_SIGN),
-                DREAM_BLUE_WOOD_HANGING_SIGN, DREAM_BLUE_WOOD_WALL_HANGING_SIGN);
-
-        addValidBlocks(BuiltInRegistries.BLOCK_ENTITY_TYPE.getValue(BlockEntityTypeIds.SIGN),
+                DREAM_GREEN_WOOD_SIGN, DREAM_GREEN_WOOD_WALL_SIGN,
+                DREAM_PURPLE_WOOD_SIGN, DREAM_PURPLE_WOOD_WALL_SIGN,
+                DREAM_BLUE_WOOD_SIGN, DREAM_BLUE_WOOD_WALL_SIGN,
                 DREAM_LIGHT_BLUE_WOOD_SIGN, DREAM_LIGHT_BLUE_WOOD_WALL_SIGN);
 
         addValidBlocks(BuiltInRegistries.BLOCK_ENTITY_TYPE.getValue(BlockEntityTypeIds.HANGING_SIGN),
+                DREAM_GREEN_WOOD_HANGING_SIGN, DREAM_GREEN_WOOD_WALL_HANGING_SIGN,
+                DREAM_PURPLE_WOOD_HANGING_SIGN, DREAM_PURPLE_WOOD_WALL_HANGING_SIGN,
+                DREAM_BLUE_WOOD_HANGING_SIGN, DREAM_BLUE_WOOD_WALL_HANGING_SIGN,
                 DREAM_LIGHT_BLUE_WOOD_HANGING_SIGN, DREAM_LIGHT_BLUE_WOOD_WALL_HANGING_SIGN);
+
+        addValidBlocks(BlockEntityTypes.CREAKING_HEART, ModBlocks.ECHO_CREAKING_HEART);
+
+        addValidBlocks(BlockEntityTypes.BRUSHABLE_BLOCK, ModBlocks.SUSPICIOUS_DIRT);
     }
 
     private static void addValidBlocks(BlockEntityType<?> type, Block... blocks) {
@@ -473,6 +526,7 @@ public class ModBlocks {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name))));
         return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, name), toRegister);
     }
+
 
     private static BlockBehaviour.Properties wallVariant(BlockBehaviour.Properties properties, Block standing, boolean copyMapColor) {
         return properties.overrideLootTable(standing.getLootTable())

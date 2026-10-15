@@ -57,6 +57,9 @@ public class ModPortals {
                 for (Direction.Axis axis : new Direction.Axis[]{Direction.Axis.X, Direction.Axis.Z}) {
                     var shape = DreamPortalShape.find(level, inside, axis);
                     if (shape.isPresent()) {
+                        if (shape.get().isAlreadyActive(level)) {
+                            return InteractionResult.FAIL;
+                        }
                         shape.get().fill(level);
                         level.playSound(null, inside, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0f, 1.0f);
                         if (!player.getAbilities().instabuild) held.shrink(1);

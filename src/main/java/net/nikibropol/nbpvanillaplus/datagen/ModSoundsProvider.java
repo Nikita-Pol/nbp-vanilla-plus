@@ -2,12 +2,16 @@ package net.nikibropol.nbpvanillaplus.datagen;
 
 import net.fabricmc.fabric.api.client.datagen.v1.builder.SoundTypeBuilder;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricSoundsProvider;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
+import net.minecraft.sounds.SoundEvent;
 import net.nikibropol.nbpvanillaplus.NBPVanillaPlus;
+import net.nikibropol.nbpvanillaplus.sound.ModAmbientSounds;
 import net.nikibropol.nbpvanillaplus.sound.ModSounds;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModSoundsProvider extends FabricSoundsProvider {
@@ -15,6 +19,8 @@ public class ModSoundsProvider extends FabricSoundsProvider {
     public ModSoundsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
+
+    private static final int MOD_TRACK_WEIGHT = 5;
 
     @Override
     protected void configure(HolderLookup.Provider registryLookup, SoundExporter exporter) {
@@ -31,50 +37,38 @@ public class ModSoundsProvider extends FabricSoundsProvider {
         exporter.add(ModSounds.BROKEN_ETERNITY, SoundTypeBuilder.of(ModSounds.BROKEN_ETERNITY.value())
                 .sound(SoundTypeBuilder.RegistrationBuilder
                         .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "broken_eternity")).stream(true)));
+        exporter.add(ModSounds.SLEEPING_FOREST, SoundTypeBuilder.of(ModSounds.SLEEPING_FOREST.value())
+                .sound(SoundTypeBuilder.RegistrationBuilder
+                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "sleeping_forest")).stream(true)));
+        exporter.add(ModSounds.DREAMS, SoundTypeBuilder.of(ModSounds.DREAMS.value())
+                .sound(SoundTypeBuilder.RegistrationBuilder
+                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "dreams")).stream(true)));
+        exporter.add(ModSounds.INTO_SILENCE, SoundTypeBuilder.of(ModSounds.INTO_SILENCE.value())
+                .sound(SoundTypeBuilder.RegistrationBuilder
+                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "into_silence")).stream(true)));
+        exporter.add(ModSounds.JUST_A_MEMORY, SoundTypeBuilder.of(ModSounds.JUST_A_MEMORY.value())
+                .sound(SoundTypeBuilder.RegistrationBuilder
+                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "just_a_memory")).stream(true)));
 
-        exporter.add(ModSounds.THEY_STILL_WAIT_YOU, SoundTypeBuilder.of(ModSounds.THEY_STILL_WAIT_YOU.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "they_still_wait_you")).stream(true)));
+        ModAmbientSounds.playlists().forEach(playlist ->
+                playlist(exporter, playlist.event(), playlist.vanilla(), playlist.files().toArray(String[]::new)));
+    }
 
-        exporter.add(ModSounds.BREAK_TIME, SoundTypeBuilder.of(ModSounds.BREAK_TIME.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "break_time")).stream(true)));
-        exporter.add(ModSounds.LETS_BE_HAPPY, SoundTypeBuilder.of(ModSounds.LETS_BE_HAPPY.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "lets_be_happy")).stream(true)));
-        exporter.add(ModSounds.AFTER_ALL, SoundTypeBuilder.of(ModSounds.AFTER_ALL.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "after_all")).stream(true)));
-        exporter.add(ModSounds.BREATHE_BLUR, SoundTypeBuilder.of(ModSounds.BREATHE_BLUR.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "breathe_blur")).stream(true)));
-        exporter.add(ModSounds.EVENING, SoundTypeBuilder.of(ModSounds.EVENING.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "evening")).stream(true)));
-        exporter.add(ModSounds.INFORMATED, SoundTypeBuilder.of(ModSounds.INFORMATED.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "informated")).stream(true)));
-        exporter.add(ModSounds.MEMORIES, SoundTypeBuilder.of(ModSounds.MEMORIES.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "memories")).stream(true)));
-        exporter.add(ModSounds.NEBULA, SoundTypeBuilder.of(ModSounds.NEBULA.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "nebula")).stream(true)));
-        exporter.add(ModSounds.RESTART, SoundTypeBuilder.of(ModSounds.RESTART.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "restart")).stream(true)));
-        exporter.add(ModSounds.STILL_THERE, SoundTypeBuilder.of(ModSounds.STILL_THERE.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "still_there")).stream(true)));
-        exporter.add(ModSounds.TIMES_UP, SoundTypeBuilder.of(ModSounds.TIMES_UP.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "times_up")).stream(true)));
-        exporter.add(ModSounds.AMBIENT_BROKEN_ETERNITY, SoundTypeBuilder.of(ModSounds.AMBIENT_BROKEN_ETERNITY.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "ambient_broken_eternity")).stream(true)));
-        exporter.add(ModSounds.NAMELESS_ECHOES, SoundTypeBuilder.of(ModSounds.NAMELESS_ECHOES.value())
-                .sound(SoundTypeBuilder.RegistrationBuilder
-                        .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, "nameless_echoes")).stream(true)));
+    private static void playlist(SoundExporter exporter, Holder.Reference<SoundEvent> event,
+                                 List<String> vanillaEvents, String... files) {
+        SoundTypeBuilder builder = SoundTypeBuilder.of(event.value())
+                .subtitle(null);
+        for (String file : files) {
+            builder.sound(SoundTypeBuilder.RegistrationBuilder
+                    .ofFile(Identifier.fromNamespaceAndPath(NBPVanillaPlus.MOD_ID, file))
+                    .stream(true)
+                    .weight(MOD_TRACK_WEIGHT));
+        }
+        for (String vanilla : vanillaEvents) {
+            builder.sound(SoundTypeBuilder.RegistrationBuilder
+                    .ofEvent(SoundEvent.createVariableRangeEvent(Identifier.withDefaultNamespace(vanilla))));
+        }
+        exporter.add(event, builder);
     }
 
     @Override

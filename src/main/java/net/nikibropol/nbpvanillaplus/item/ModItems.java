@@ -10,15 +10,19 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.nikibropol.nbpvanillaplus.NBPVanillaPlus;
 import net.nikibropol.nbpvanillaplus.block.ModBlocks;
 import net.nikibropol.nbpvanillaplus.datagen.ModJukeboxSongs;
+import net.nikibropol.nbpvanillaplus.entity.ModEntities;
 import net.nikibropol.nbpvanillaplus.food.ModFoods;
 import net.nikibropol.nbpvanillaplus.item.custom.*;
 
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -71,6 +75,8 @@ public class ModItems {
             properties -> new BlockItem(ModBlocks.FLOWTAREM_CROP, properties.useItemDescriptionPrefix()));
     public static final Item RESIN_FLOWTAREM = registerItem("resin_flowtarem",
             properties -> new Item(properties.food(ModFoods.RESIN_FLOWTAREM, ModFoods.RESIN_FLOWTAREM_CONSUMABLE)));
+public static final Item DREAM_BREAD = registerItem("dream_bread",
+            properties -> new DreamBreadItem(properties.food(ModFoods.DREAM_BREAD, ModFoods.DREAM_BREAD_CONSUMABLE)));
 
     public static final Item BUNCH_OF_SUGAR_CANE = registerItem("bunch_of_sugar_cane",
             properties -> new Item(properties.useItemDescriptionPrefix()));
@@ -154,6 +160,14 @@ public class ModItems {
     public static final Item EXTENDER_ECHO = registerItem("extender_echo",
             properties -> new ExtenderItem(properties.stacksTo(1).rarity(Rarity.RARE), 4));
 
+    public static final Item DISC_FRAGMENT_GREEN_DREAMS = registerItem("disc_fragment_green_dreams",
+            properties -> new Item(properties.rarity(Rarity.UNCOMMON)));
+    public static final Item DISC_FRAGMENT_PURPLE_DREAMS = registerItem("disc_fragment_purple_dreams",
+            properties -> new Item(properties.rarity(Rarity.UNCOMMON)));
+    public static final Item DISC_FRAGMENT_BLUE_DREAMS = registerItem("disc_fragment_blue_dreams",
+            properties -> new Item(properties.rarity(Rarity.UNCOMMON)));
+    public static final Item DISC_FRAGMENT_LIGHT_BLUE_DREAMS = registerItem("disc_fragment_light_blue_dreams",
+            properties -> new Item(properties.rarity(Rarity.UNCOMMON)));
     public static final Item ONLY_ONCE_MORE_MUSIC_DISC = registerItem("only_once_more_music_disc",
             properties -> new Item(properties.jukeboxPlayable(ModJukeboxSongs.ONLY_ONCE_MORE_KEY)
                     .stacksTo(1).rarity(Rarity.RARE)));
@@ -163,6 +177,18 @@ public class ModItems {
     public static final Item BROKEN_ETERNITY_MUSIC_DISC = registerItem("broken_eternity_music_disc",
             properties -> new Item(properties.jukeboxPlayable(ModJukeboxSongs.BROKEN_ETERNITY_KEY)
                     .stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final Item SLEEPING_FOREST_MUSIC_DISC = registerItem("sleeping_forest_music_disc",
+            properties -> new Item(properties.jukeboxPlayable(ModJukeboxSongs.SLEEPING_FOREST_KEY)
+                    .stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final Item DREAMS_MUSIC_DISC = registerItem("dreams_music_disc",
+            properties -> new Item(properties.jukeboxPlayable(ModJukeboxSongs.DREAMS_KEY)
+                    .stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item INTO_SILENCE_MUSIC_DISC = registerItem("into_silence_music_disc",
+            properties -> new Item(properties.jukeboxPlayable(ModJukeboxSongs.INTO_SILENCE_KEY)
+                    .stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item JUST_A_MEMORY_MUSIC_DISC = registerItem("just_a_memory_music_disc",
+            properties -> new Item(properties.jukeboxPlayable(ModJukeboxSongs.JUST_A_MEMORY_KEY)
+                    .stacksTo(1).rarity(Rarity.RARE)));
 
     public static final Item DREAM_GREEN_WOOD_SIGN = registerItem("dream_green_wood_sign",
             properties -> new SignItem(ModBlocks.DREAM_GREEN_WOOD_SIGN, ModBlocks.DREAM_GREEN_WOOD_WALL_SIGN, properties.stacksTo(16)));
@@ -181,6 +207,16 @@ public class ModItems {
     public static final Item DREAM_LIGHT_BLUE_WOOD_HANGING_SIGN = registerItem("dream_light_blue_wood_hanging_sign",
             properties -> new HangingSignItem(ModBlocks.DREAM_LIGHT_BLUE_WOOD_HANGING_SIGN, ModBlocks.DREAM_LIGHT_BLUE_WOOD_WALL_HANGING_SIGN, properties.stacksTo(16)));
 
+    public static final Item RESIN_ECHO_CLUMP = registerItem("resin_echo_clump",
+            properties -> new BlockItem(ModBlocks.RESIN_ECHO_CLUMP, properties.useItemDescriptionPrefix().rarity(Rarity.UNCOMMON)));
+    public static final Item ECHO_CREAKING_SPAWN_EGG = registerItem("echo_creaking_spawn_egg",
+            properties -> new SpawnEggItem(properties.spawnEgg(ModEntities.ECHO_CREAKING)));
+
+    public static final Item LIGHT_SCANNER = registerItem("light_scanner",
+            properties -> new LightScannerItem(properties.stacksTo(1).rarity(Rarity.UNCOMMON),
+                    Component.translatable("item.nbp-vanilla-plus.light_scanner.desc1").withStyle(ChatFormatting.GRAY),
+                    Component.translatable("item.nbp-vanilla-plus.light_scanner.desc2").withStyle(ChatFormatting.GRAY),
+                    Component.translatable("item.nbp-vanilla-plus.light_scanner.desc3").withStyle(ChatFormatting.DARK_GRAY)));
 
 
     public static ResourceKey<Item> getRK(Item item) {

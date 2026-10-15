@@ -4,9 +4,14 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "BlockEntityTypeAccessor",
+    "CreakingHeartDecoratorMixin",
+    "CreakingHeartSpawnMixin",
     "EntityMixin",
     "ExampleMixin",
-    "SlotMixin"
+    "LivingEntityMixin",
+    "SlotMixin",
+    "SodiumShaderMixin",
+    "VibrationListenerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -16,6 +21,9 @@
   },
   "client": [
     "AbstractClientPlayerMixin",
-    "PlayerSwingMixin"
+    "AtmosphericFogEnvironmentMixin",
+    "FogRendererMixin",
+    "PlayerSwingMixin",
+    "SkyRendererMixin"
   ]
 }
